@@ -4,18 +4,21 @@ using UnityEngine;
 
 public class EnemyBehavior : MonoBehaviour
 {
-    [SerializeField] private float idleDuration = 1f;
+    [SerializeField] private EnemyStatsSO enemyStats;
 
-    [SerializeField] private float walkDuration = 2f;
+    private float idleDuration = 1f;
+    private float walkDuration = 2f;
 
     [SerializeField] private Transform target;
+    private float walkDistance;
 
     private float walkSpeed;
 
-    private float walkDistance;
-
     void Start()
     {
+        idleDuration = enemyStats.IdleDuration;
+        walkDuration = enemyStats.WalkDuration;
+
         if (target == null)
         {
             Debug.LogWarning("EnemyBehavior: target is not assigned.");
