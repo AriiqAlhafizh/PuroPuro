@@ -2,64 +2,120 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public class EnemyBehavior : MonoBehaviour
+public abstract class EnemyBehavior : MonoBehaviour
 {
-    [SerializeField] private EnemyStatsSO enemyStats;
+    [SerializeField] protected EnemyStatsSO enemyStats;
+    [SerializeField] protected float offset = 0.5f;
 
-    private float idleDuration = 1f;
-    private float walkDuration = 2f;
+    protected float idleDuration;
+    protected float walkDuration;
+    protected float walkSpeed;
 
-    [SerializeField] private Transform target;
-    private float walkDistance;
+    protected Vector3 dir;
+    
+    protected Camera cam;
 
-    private float walkSpeed;
-
-    void Start()
+    protected virtual void Start()
     {
-        idleDuration = enemyStats.IdleDuration;
-        walkDuration = enemyStats.WalkDuration;
-
-        if (target == null)
+        if (enemyStats == null)
         {
-            Debug.LogWarning("EnemyBehavior: target is not assigned.");
+            Debug.LogWarning("EnemyBehavior: enemyStats is not assigned.");
             return;
         }
 
-        walkDistance = Vector3.Distance(transform.position, target.position);
-        walkSpeed = walkDistance / walkDuration;
+        cam = Camera.main;
+
+        idleDuration = enemyStats.IdleDuration;
+        walkDuration = enemyStats.WalkDuration;
+
+        dir = GetWalkDirection();
 
         StartCoroutine(WalkPhase());
     }
 
-    private IEnumerator WalkPhase()
+    protected virtual IEnumerator WalkPhase()
     {
-        var endPosition = target.position;
         float elapsed = 0f;
 
-        while (elapsed < walkDuration)
+        OnWalkStart();
+
+        while (elapsed < walkDuration - offset)
         {
             float step = walkSpeed * Time.deltaTime;
-            transform.position = Vector3.MoveTowards(transform.position, endPosition, step);
+
+            if (dir != Vector3.zero)
+            {
+                transform.position += dir.normalized * step;
+            }
 
             elapsed += Time.deltaTime;
             yield return null;
         }
 
+        OnWalkEnd();
+
         StartCoroutine(IdlePhase());
     }
 
-    private IEnumerator IdlePhase()
+    protected virtual IEnumerator IdlePhase()
     {
-        Debug.Log("Enemy is Idling!");
+        OnIdleEnter();
         yield return new WaitForSeconds(idleDuration);
         StartCoroutine(AttackPhase());
     }
 
-    private IEnumerator AttackPhase()
+    protected virtual IEnumerator AttackPhase()
     {
-        // anamation or attack logic here
-        Debug.Log("Enemy is attacking!");
+        OnAttack();
         yield return new WaitForSeconds(idleDuration);
         StartCoroutine(IdlePhase());
     }
+
+
+    protected virtual Vector3 GetWalkDirection()
+    {
+        if (cam == null)
+            cam = Camera.main;
+
+        if (cam == null)
+            return Vector3.zero;
+
+        Vector3 targetPos = cam.transform.position;
+        Vector3 delta = targetPos - transform.position;
+
+        Vector3 lookDir = new Vector3(delta.x, 0f, delta.z);
+        if (lookDir.sqrMagnitude > 0.0001f)
+        {
+            transform.rotation = Quaternion.LookRotation(lookDir);
+        }
+
+        Vector3 chosenDir;
+        Vector3 endPos;
+        if (Mathf.Abs(delta.x) > Mathf.Abs(delta.z))
+        {
+            chosenDir = new Vector3(Mathf.Sign(delta.x), 0f, 0f);
+            endPos = new Vector3(targetPos.x, transform.position.y, transform.position.z);
+        }
+        else
+        {
+            chosenDir = new Vector3(0f, 0f, Mathf.Sign(delta.z));
+            endPos = new Vector3(transform.position.x, transform.position.y, targetPos.z);
+        }
+
+        float distance = Vector3.Distance(transform.position, endPos);
+        if (walkDuration > 0f)
+        {
+            walkSpeed = distance / walkDuration;
+        }
+
+        return chosenDir;
+    }
+
+    protected virtual void OnWalkStart() { }
+
+    protected virtual void OnWalkEnd() { }
+
+    protected virtual void OnIdleEnter() { Debug.Log("Enemy is Idling!"); }
+
+    protected abstract void OnAttack();
 }
