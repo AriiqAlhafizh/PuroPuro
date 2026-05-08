@@ -118,4 +118,9 @@ public abstract class EnemyBehavior : MonoBehaviour
     protected virtual void OnIdleEnter() { Debug.Log("Enemy is Idling!"); }
 
     protected abstract void OnAttack();
+
+    protected virtual void AttackLand()
+    {
+        PlayerStatsManager.instance.TakeDamage();
+    }
 }
