@@ -7,13 +7,20 @@ public abstract class EnemyBehavior : MonoBehaviour
     [SerializeField] protected EnemyStatsSO enemyStats;
     [SerializeField] protected float offset = 0.5f;
 
+    [Header("Animation Controller")]
+    [SerializeField] protected RuntimeAnimatorController spawnController;
+    [SerializeField] protected RuntimeAnimatorController walkController;
+    [SerializeField] protected RuntimeAnimatorController attackController;
+    [SerializeField] protected RuntimeAnimatorController idleController;
+    [SerializeField] protected RuntimeAnimatorController deathController;
+
     protected float idleDuration;
     protected float walkDuration;
     protected float walkSpeed;
 
     protected Vector3 dir;
-    
     protected Camera cam;
+    protected Animator animator;
 
     protected virtual void Start()
     {
@@ -23,6 +30,8 @@ public abstract class EnemyBehavior : MonoBehaviour
             return;
         }
 
+        animator = GetComponent<Animator>();
+
         cam = Camera.main;
 
         idleDuration = enemyStats.IdleDuration;
@@ -30,13 +39,19 @@ public abstract class EnemyBehavior : MonoBehaviour
 
         dir = GetWalkDirection();
 
+        StartCoroutine(SpawnPhase());
+    }
+
+    protected virtual IEnumerator SpawnPhase()
+    {
+        OnSpawn();
+        yield return new WaitUntil(() => animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f && !animator.IsInTransition(0));
         StartCoroutine(WalkPhase());
     }
 
     protected virtual IEnumerator WalkPhase()
     {
         float elapsed = 0f;
-
         OnWalkStart();
 
         while (elapsed < walkDuration - offset)
@@ -67,8 +82,22 @@ public abstract class EnemyBehavior : MonoBehaviour
     protected virtual IEnumerator AttackPhase()
     {
         OnAttack();
+        animator.Rebind();
+        yield return new WaitUntil(() => animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f && !animator.IsInTransition(0));
+        OnIdleEnter();
         yield return new WaitForSeconds(idleDuration);
         StartCoroutine(IdlePhase());
+    }
+
+    protected void ApplyController(RuntimeAnimatorController controller)
+    {
+        if (animator == null || controller == null)
+            return;
+
+        if (animator.runtimeAnimatorController != controller)
+        {
+            animator.runtimeAnimatorController = controller;
+        }
     }
 
 
@@ -111,13 +140,15 @@ public abstract class EnemyBehavior : MonoBehaviour
         return chosenDir;
     }
 
+    protected virtual void OnSpawn() { }
+
     protected virtual void OnWalkStart() { }
 
     protected virtual void OnWalkEnd() { }
 
-    protected virtual void OnIdleEnter() { Debug.Log("Enemy is Idling!"); }
+    protected virtual void OnIdleEnter() { }
 
-    protected abstract void OnAttack();
+    protected virtual void OnAttack() { }
 
     protected virtual void AttackLand()
     {

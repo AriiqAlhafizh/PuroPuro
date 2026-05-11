@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: RangeEnemy
   m_EditorClassIdentifier: Assembly-CSharp::EnemyStatsSO
   IdleDuration: 2
-  WalkDuration: 3
+  WalkDuration: 4

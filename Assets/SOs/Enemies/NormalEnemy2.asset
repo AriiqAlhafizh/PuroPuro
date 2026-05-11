@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a40f995f1e68670429ddb7c0b049cb08, type: 3}
   m_Name: NormalEnemy2
   m_EditorClassIdentifier: Assembly-CSharp::EnemyStatsSO
-  IdleDuration: 2
-  WalkDuration: 3
+  IdleDuration: 5
+  WalkDuration: 2.5

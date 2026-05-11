@@ -4,20 +4,15 @@ using UnityEngine;
 
 public class EnemyBehavior_Normal : EnemyBehavior
 {
-    protected override void OnWalkStart() {
-        
-    }
+    protected override void OnSpawn() { ApplyController(spawnController); }
 
-    protected override void OnWalkEnd() { }
+    protected override void OnWalkStart() { ApplyController(walkController); }
 
-    protected override void OnIdleEnter() { 
-        
-        Debug.Log("Enemy is Idling!"); 
-    
-    }
+    protected override void OnWalkEnd() { } 
+    protected override void OnIdleEnter() { ApplyController(idleController); }
 
     protected override void OnAttack()
     {
-        
+        ApplyController(attackController);
     }
 }
