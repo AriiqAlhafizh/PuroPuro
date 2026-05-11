@@ -4,6 +4,9 @@ using UnityEngine.InputSystem;
 
 public class Gun : MonoBehaviour
 {
+    [Header("References")]
+    public GunAudio gunAudio;
+
     [Header("Settings")]
     public int maxBullets = 6;
     public int currentBullets;
@@ -31,6 +34,7 @@ public class Gun : MonoBehaviour
                 //Debug.Log("Hit: " + hit.collider.name);
             }
 
+            gunAudio.PlayShootAudio();
             currentBullets--;
             Debug.Log("Bullets left: " + currentBullets);
         }
@@ -39,6 +43,7 @@ public class Gun : MonoBehaviour
     {
         if (context.performed && !isBinded && !isParalyzed)
         {
+            gunAudio.PlayReloadAudio();
             StartCoroutine(ReloadCoroutine());
         }
     }
