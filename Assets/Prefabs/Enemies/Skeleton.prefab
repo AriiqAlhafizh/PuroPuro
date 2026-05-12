@@ -78,7 +78,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyBehavior_Normal
   enemyStats: {fileID: 11400000, guid: f5df5c58421337b4bbcd7272e88aeaf2, type: 2}
-  offset: 1
+  offset: 0.8
   spawnController: {fileID: 22100000, guid: 15340e2c8ae3d5b479a50465a6d23485, type: 2}
   walkController: {fileID: 22100000, guid: 3b9ff8ae2aca47242a1abf196e76acf4, type: 2}
   attackController: {fileID: 22100000, guid: e0964a86e58371546a7538cdefa1b62f, type: 2}
