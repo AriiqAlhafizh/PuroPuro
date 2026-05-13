@@ -82,7 +82,7 @@ public abstract class EnemyBehavior : MonoBehaviour
     protected virtual IEnumerator AttackPhase()
     {
         OnAttack();
-        animator.Rebind();
+        animator.Rebind(); 
         yield return new WaitUntil(() => animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f && !animator.IsInTransition(0));
         OnIdleEnter();
         yield return new WaitForSeconds(idleDuration);
