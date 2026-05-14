@@ -19,6 +19,7 @@ public abstract class EnemyBehavior : MonoBehaviour
     protected float walkSpeed;
 
     protected Vector3 dir;
+    protected Vector3 endPos;
     protected Camera cam;
     protected Animator animator;
 
@@ -54,8 +55,15 @@ public abstract class EnemyBehavior : MonoBehaviour
         float elapsed = 0f;
         OnWalkStart();
 
-        while (elapsed < walkDuration - offset)
+        while (elapsed < walkDuration)
         {
+            float distance = Vector3.Distance(transform.position, endPos);
+
+            if(distance < offset)
+            {
+                break;
+            }
+
             float step = walkSpeed * Time.deltaTime;
 
             if (dir != Vector3.zero)
@@ -119,7 +127,7 @@ public abstract class EnemyBehavior : MonoBehaviour
         }
 
         Vector3 chosenDir;
-        Vector3 endPos;
+        
         if (Mathf.Abs(delta.x) > Mathf.Abs(delta.z))
         {
             chosenDir = new Vector3(Mathf.Sign(delta.x), 0f, 0f);
@@ -153,5 +161,9 @@ public abstract class EnemyBehavior : MonoBehaviour
     protected virtual void AttackLand()
     {
         PlayerStatsManager.instance.TakeDamage();
+    }
+    public virtual void OnDeath() 
+    { 
+        Destroy(gameObject);
     }
 }
