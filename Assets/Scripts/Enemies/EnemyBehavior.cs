@@ -148,15 +148,17 @@ public abstract class EnemyBehavior : MonoBehaviour
         return chosenDir;
     }
 
-    protected virtual void OnSpawn() { }
+    protected virtual void OnSpawn() { ApplyController(spawnController); }
 
-    protected virtual void OnWalkStart() { }
+    protected virtual void OnWalkStart() { ApplyController(walkController); }
 
     protected virtual void OnWalkEnd() { }
+    protected virtual void OnIdleEnter() { ApplyController(idleController); }
 
-    protected virtual void OnIdleEnter() { }
-
-    protected virtual void OnAttack() { }
+    protected virtual void OnAttack()
+    {
+        ApplyController(attackController);
+    }
 
     protected virtual void AttackLand()
     {

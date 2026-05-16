@@ -23709,7 +23709,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gun
   gunAudio: {fileID: 2006505672}
-  maxBullets: 6
+  maxBullets: 1000
   currentBullets: 0
   isReloading: 0
   reloadDuration: 1

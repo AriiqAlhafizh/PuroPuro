@@ -4,15 +4,27 @@ using UnityEngine;
 
 public class EnemyBehavior_Normal : EnemyBehavior
 {
-    protected override void OnSpawn() { ApplyController(spawnController); }
+    [Header("Normal Enemy Stats List")]
+    [SerializeField] protected List<EnemyStatsSO> EnemyStats;
 
-    protected override void OnWalkStart() { ApplyController(walkController); }
-
-    protected override void OnWalkEnd() { } 
-    protected override void OnIdleEnter() { ApplyController(idleController); }
-
-    protected override void OnAttack()
+    protected override void Start()
     {
-        ApplyController(attackController);
+        int randomIndex = Random.Range(0, EnemyStats.Count);
+        if (randomIndex >= EnemyStats.Count)
+        {
+            Debug.LogWarning("EnemyBehavior: randomIndex is out of bounds.");
+            return;
+        }
+
+        animator = GetComponent<Animator>();
+
+        cam = Camera.main;
+
+        idleDuration = EnemyStats[randomIndex].IdleDuration;
+        walkDuration = EnemyStats[randomIndex].WalkDuration;
+
+        dir = GetWalkDirection();
+
+        StartCoroutine(SpawnPhase());
     }
 }
