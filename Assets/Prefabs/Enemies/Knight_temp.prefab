@@ -18,19 +18,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1571042049591659991, guid: 61b3e3801d56a3f429556c96ea2f07d6, type: 3}
       propertyPath: m_Name
-      value: Ranger_temp
+      value: Knight_temp
       objectReference: {fileID: 0}
     - target: {fileID: 2199628841774520173, guid: 61b3e3801d56a3f429556c96ea2f07d6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.02
+      value: 2.7403357
       objectReference: {fileID: 0}
     - target: {fileID: 2199628841774520173, guid: 61b3e3801d56a3f429556c96ea2f07d6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.85
+      value: 0.84999985
       objectReference: {fileID: 0}
     - target: {fileID: 2199628841774520173, guid: 61b3e3801d56a3f429556c96ea2f07d6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.91
+      value: -1.5531136
       objectReference: {fileID: 0}
     - target: {fileID: 2199628841774520173, guid: 61b3e3801d56a3f429556c96ea2f07d6, type: 3}
       propertyPath: m_LocalRotation.w
@@ -65,13 +65,12 @@ PrefabInstance:
       value: Head
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 6900578083318274857, guid: 61b3e3801d56a3f429556c96ea2f07d6, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1571042049591659991, guid: 61b3e3801d56a3f429556c96ea2f07d6, type: 3}
       insertIndex: 1
-      addedObject: {fileID: -965271324701184696}
+      addedObject: {fileID: 8628667401140986768}
     - targetCorrespondingSourceObject: {fileID: 877889678167473287, guid: 61b3e3801d56a3f429556c96ea2f07d6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 940137344623073915}
@@ -84,7 +83,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1571042049591659991, guid: 61b3e3801d56a3f429556c96ea2f07d6, type: 3}
   m_PrefabInstance: {fileID: 3678385114208055209}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &-965271324701184696
+--- !u!114 &8628667401140986768
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -93,16 +92,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 2792594256196821630}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e6c87e3ca24e7e4ab0e1c0c19ff28d6, type: 3}
+  m_Script: {fileID: 11500000, guid: 6de1077b1bfebd74e93167b693857326, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyBehavior_Range
-  enemyStats: {fileID: 11400000, guid: effa89ef1db587e48b3d6d1bd8ebfe11, type: 2}
-  offset: 0
-  spawnController: {fileID: 22100000, guid: c44bf825bd7b3de40940f5d0ab25bf5e, type: 2}
-  walkController: {fileID: 22100000, guid: ccfcef0ea4d3ca846a54601112e22e94, type: 2}
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyBehavior_Knight
+  enemyStats: {fileID: 11400000, guid: 4dd1d38925dba38489b101ea3c8ef926, type: 2}
+  offset: 2.3
+  spawnController: {fileID: 22100000, guid: 15340e2c8ae3d5b479a50465a6d23485, type: 2}
+  walkController: {fileID: 22100000, guid: 3b9ff8ae2aca47242a1abf196e76acf4, type: 2}
   attackController: {fileID: 22100000, guid: e0964a86e58371546a7538cdefa1b62f, type: 2}
   idleController: {fileID: 9100000, guid: d0635c5725ebf5c49ba6eee6b99dadb6, type: 2}
   deathController: {fileID: 22100000, guid: d86f425e09bd3ff4fa0e23cbd09347a6, type: 2}
+  isShielded: 1
 --- !u!1 &4549440223160029998 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 877889678167473287, guid: 61b3e3801d56a3f429556c96ea2f07d6, type: 3}

@@ -9,12 +9,14 @@ public class SpawnerManager : MonoBehaviour
     [SerializeField] private List<Transform>  SpawnPoint;
     [SerializeField] private List<GameObject> SpawnObject;
 
+    [SerializeField] private float cooldownTime = 0.5f;
+
     public static SpawnerManager Instance { get; private set; }
     public float Cooldown { get; private set; }
 
     void Start()
     {
-        
+        Cooldown = 0;
         //Spawn();
     }
 
@@ -30,7 +32,7 @@ public class SpawnerManager : MonoBehaviour
         if(Cooldown <= 0)
         {
             Spawn();
-            Cooldown = 0.5f; // Reset cooldown after spawning
+            Cooldown = cooldownTime; // Reset cooldown after spawning
         }
         else
         {

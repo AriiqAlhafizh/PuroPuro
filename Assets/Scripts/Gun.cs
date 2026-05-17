@@ -36,7 +36,7 @@ public class Gun : MonoBehaviour
                     EnemyBehavior enemy = hit.collider.GetComponentInParent<EnemyBehavior>();
                     if (enemy != null)
                     {
-                        enemy.OnDeath();
+                        enemy.OnBeingHit();
                     }
                 }
                 Debug.Log("Hit: " + hit.collider.name);

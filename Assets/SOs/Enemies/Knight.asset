@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a40f995f1e68670429ddb7c0b049cb08, type: 3}
-  m_Name: RangeEnemy
+  m_Name: Knight
   m_EditorClassIdentifier: Assembly-CSharp::EnemyStatsSO
-  IdleDuration: 2
-  WalkDuration: 3
+  IdleDuration: 4
+  WalkDuration: 10

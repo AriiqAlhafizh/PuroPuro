@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public abstract class EnemyBehavior : MonoBehaviour
+public class EnemyBehavior : MonoBehaviour
 {
     [SerializeField] protected EnemyStatsSO enemyStats;
     [SerializeField] protected float offset = 0.5f;
@@ -164,8 +164,13 @@ public abstract class EnemyBehavior : MonoBehaviour
     {
         PlayerStatsManager.instance.TakeDamage();
     }
-    public virtual void OnDeath() 
+
+    public virtual void OnBeingHit() {
+       StopAllCoroutines();
+       OnDeath();
+    }
+    protected virtual void OnDeath() 
     { 
-        Destroy(gameObject);
+       Destroy(gameObject);
     }
 }
