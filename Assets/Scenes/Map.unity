@@ -1047,9 +1047,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9323c9dd47ff72b40bc5cc3851404314, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpawnerManager
-  SpawnPoint: []
-  SpawnObject: []
-  cooldownTime: 1
+  SpawnPointsParent: []
 --- !u!4 &83036472
 Transform:
   m_ObjectHideFlags: 0
