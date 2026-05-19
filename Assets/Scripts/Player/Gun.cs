@@ -26,9 +26,17 @@ public class Gun : MonoBehaviour
             && !PlayerStatsManager.isParalyzed)
         {
             Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
-            if (Physics.Raycast(ray, out _, 10f))
+            if (Physics.Raycast(ray, out RaycastHit hit, 10f))
             {
-                //Debug.Log("Hit: " + hit.collider.name);
+                if(hit.collider.name == "Head" || hit.collider.name == "Body")
+                {
+                    EnemyBehavior enemy = hit.collider.GetComponentInParent<EnemyBehavior>();
+                    if (enemy != null)
+                    {
+                        enemy.OnBeingHit();
+                    }
+                }
+                Debug.Log("Hit: " + hit.collider.name);
             }
 
             gunAudio.PlayShootAudio();
