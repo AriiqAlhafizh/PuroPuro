@@ -18,6 +18,17 @@ public class PlayerStatsManager : MonoBehaviour
         }
     }
 
+    [Header("Player Stats")]
+    public static int health = 3;
+    public static int maxBullets = 6;
+    public static int currentBullets = 6;
+    public static bool isReloading = false;
+
+    [Header("Debuffs")]
+    public static bool isInForcedPOV = false;
+    public static bool isBinded = false;
+    public static bool isParalyzed = false;
+
     public void TakeDamage()
     {
         Camera.main.GetComponent<ScreenShake>().TriggerShake();
