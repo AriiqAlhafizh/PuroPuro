@@ -16,39 +16,49 @@ public class Gun : MonoBehaviour
 
     private void Start()
     {
-        PlayerStatsManager.currentBullets = PlayerStatsManager.maxBullets;
+        PlayerStatsManager.instance.currentBullets = PlayerStatsManager.instance.maxBullets;
     }
     public void Shoot(InputAction.CallbackContext context)
     {
-        if (context.performed && 
-            PlayerStatsManager.currentBullets > 0 
-            && !PlayerStatsManager.isReloading 
-            && !PlayerStatsManager.isParalyzed)
+        if (context.performed 
+            && PlayerStatsManager.instance.currentBullets > 0 
+            && !PlayerStatsManager.instance.isReloading 
+            && !PlayerStatsManager.instance.isParalyzed)
         {
             Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
             if (Physics.Raycast(ray, out RaycastHit hit, 10f))
             {
-                if(hit.collider.name == "Head" || hit.collider.name == "Body")
+                if (hit.collider.CompareTag("Enemy")) 
                 {
-                    EnemyBehavior enemy = hit.collider.GetComponentInParent<EnemyBehavior>();
-                    if (enemy != null)
+                    Hitbox type = hit.collider.GetComponent<HitboxType>().hitbox;
+                    if (type == Hitbox.Body) // hit body
                     {
-                        enemy.OnBeingHit();
+                        ScoreManager.instance.IncreaseScore(50);
+                    } 
+                    else // hit head
+                    {
+                        ScoreManager.instance.IncreaseScore(100);
                     }
+
+                    EnemyBehavior enemy = hit.collider.GetComponentInParent<EnemyBehavior>();
+                    enemy.OnBeingHit();
+                    Debug.Log("Hit: " + hit.collider.name + " " + type);
+
+                    ScoreManager.instance.IncreaseHitShot();
                 }
-                Debug.Log("Hit: " + hit.collider.name);
+                ScoreManager.instance.IncreaseTotalShot();
             }
 
             gunAudio.PlayShootAudio();
-            PlayerStatsManager.currentBullets--;
-            Debug.Log("Bullets left: " + PlayerStatsManager.currentBullets);
+            PlayerStatsManager.instance.currentBullets--;
+            Debug.Log("Bullets left: " + PlayerStatsManager.instance.currentBullets);
         }
     }
     public void Reload(InputAction.CallbackContext context)
     {
         if (context.performed 
-            && !PlayerStatsManager.isBinded 
-            && !PlayerStatsManager.isParalyzed)
+            && !PlayerStatsManager.instance.isBinded 
+            && !PlayerStatsManager.instance.isParalyzed)
         {
             gunAudio.PlayReloadAudio();
             StartCoroutine(ReloadCoroutine());
@@ -57,24 +67,24 @@ public class Gun : MonoBehaviour
 
     IEnumerator ReloadCoroutine()
     {
-        PlayerStatsManager.isReloading = true;
+        PlayerStatsManager.instance.isReloading = true;
         yield return new WaitForSeconds(reloadDuration);
-        PlayerStatsManager.currentBullets = PlayerStatsManager.maxBullets;
-        PlayerStatsManager.isReloading = false;
-        Debug.Log("Reloaded! Bullets: " + PlayerStatsManager.currentBullets);
+        PlayerStatsManager.instance.currentBullets = PlayerStatsManager.instance.maxBullets;
+        PlayerStatsManager.instance.isReloading = false;
+        Debug.Log("Reloaded! Bullets: " + PlayerStatsManager.instance.currentBullets);
     }
 
     IEnumerator BindCoroutine()
     {
-        PlayerStatsManager.isBinded = true;
+        PlayerStatsManager.instance.isBinded = true;
         yield return new WaitForSeconds(bindDuration);
-        PlayerStatsManager.isBinded = false;
+        PlayerStatsManager.instance.isBinded = false;
     }
 
     IEnumerator ParalyzeCoroutine()
     {
-        PlayerStatsManager.isParalyzed = true;
+        PlayerStatsManager.instance.isParalyzed = true;
         yield return new WaitForSeconds(paralyzeDuration);
-        PlayerStatsManager.isParalyzed = false;
+        PlayerStatsManager.instance.isParalyzed = false;
     }
 }
