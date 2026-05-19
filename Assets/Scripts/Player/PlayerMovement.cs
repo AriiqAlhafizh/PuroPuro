@@ -5,7 +5,6 @@ using System.Collections;
 public class PlayerMovement : MonoBehaviour
 {
     [Header("References")]
-    public GameObject player;
     public GameObject mainCamera;
 
     [Header("Settings")]
@@ -43,23 +42,18 @@ public class PlayerMovement : MonoBehaviour
         Quaternion startCamRot = mainCamera.transform.rotation;
         Quaternion endCamRot = Quaternion.AngleAxis(angle, Vector3.up) * startCamRot;
 
-        Quaternion startPlayerRot = player.transform.rotation;
-        Quaternion endPlayerRot = Quaternion.AngleAxis(angle, Vector3.up) * startPlayerRot;
-
         while (elapsed < duration)
         {
             float t = elapsed / duration;
             float curveT = spinCurve.Evaluate(t);
 
             mainCamera.transform.rotation = Quaternion.Slerp(startCamRot, endCamRot, curveT);
-            player.transform.rotation = Quaternion.Slerp(startPlayerRot, endPlayerRot, curveT);
 
             elapsed += Time.deltaTime;
             yield return null;
         }
 
         mainCamera.transform.rotation = endCamRot;
-        player.transform.rotation = endPlayerRot;
         isSpinning = false;
     }
 }

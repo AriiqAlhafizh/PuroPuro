@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerStatsManager : MonoBehaviour
 {
@@ -19,7 +20,14 @@ public class PlayerStatsManager : MonoBehaviour
 
     public void TakeDamage()
     {
-        Debug.Log("PlayerStatsManager: TakeDamage called.");
+        Camera.main.GetComponent<ScreenShake>().TriggerShake();
     }
   
+    public void DEBUG_TakeDamage(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            TakeDamage();
+        }
+    }
 }
