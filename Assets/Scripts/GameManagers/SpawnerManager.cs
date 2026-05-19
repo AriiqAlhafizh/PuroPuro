@@ -18,7 +18,8 @@ public class SpawnerManager : MonoBehaviour
 
     void Spawn()
     {
-        int randomIndex = UnityEngine.Random.Range(0, SpawnPoint.Count);
-        Instantiate(SpawnObject[0], SpawnPoint[randomIndex].position, Quaternion.identity);
+        int randomIndex = Random.Range(0, SpawnPoint.Count);
+        int randomObjectIndex = Random.Range(0, SpawnObject.Count);
+        Instantiate(SpawnObject[randomObjectIndex], SpawnPoint[randomIndex].position, Quaternion.identity);
     }
 }
