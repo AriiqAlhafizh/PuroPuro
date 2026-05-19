@@ -16,6 +16,7 @@ public class SpawnerManager : MonoBehaviour
 
     void Start()
     {
+        TimerManager.instance.OnDifficultyChanged += OnDifficultyChanged;
         Cooldown = 0;
         //Spawn();
     }
@@ -29,14 +30,19 @@ public class SpawnerManager : MonoBehaviour
 
     private void Update()
     {
-        if(Cooldown <= 0)
-        {
-            Spawn();
-            Cooldown = cooldownTime; // Reset cooldown after spawning
-        }
-        else
-        {
-            Cooldown -= Time.deltaTime; // Decrease cooldown over time
-        }
+        //if(Cooldown <= 0)
+        //{
+        //    Spawn();
+        //    Cooldown = cooldownTime; // Reset cooldown after spawning
+        //}
+        //else
+        //{
+        //    Cooldown -= Time.deltaTime; // Decrease cooldown over time
+        //}
+    }
+
+    void OnDifficultyChanged(Difficulty difficulty)
+    {
+        Debug.Log("Difficulty changed to: " + difficulty);
     }
 }
