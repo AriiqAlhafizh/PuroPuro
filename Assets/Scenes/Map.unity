@@ -1192,6 +1192,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 92024447}
+  - component: {fileID: 92024448}
   m_Layer: 0
   m_Name: EnemySpawnPoint
   m_TagString: Untagged
@@ -1220,6 +1221,19 @@ Transform:
   - {fileID: 2005695867}
   m_Father: {fileID: 243905006}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &92024448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 92024446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 707c5e22af4772e449fc78c7df6b52ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemySpawnerManager
+  enemyTierSO: {fileID: 11400000, guid: a5266dd589c1cf347897eb0b8300c06a, type: 2}
 --- !u!1001 &101935176
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4966,8 +4980,10 @@ GameObject:
   m_Component:
   - component: {fileID: 457758186}
   - component: {fileID: 457758185}
+  - component: {fileID: 457758188}
+  - component: {fileID: 457758187}
   m_Layer: 0
-  m_Name: Enemyspawner
+  m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4985,12 +5001,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9323c9dd47ff72b40bc5cc3851404314, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpawnerManager
-  SpawnPoint:
-  - {fileID: 869352232}
-  - {fileID: 557570810}
-  - {fileID: 363493162}
-  SpawnObject:
-  - {fileID: 2792594256196821630, guid: a9dacd25835057f4b8a55fcb5e69ccc0, type: 3}
+  SpawnPointsParent:
+  - {fileID: 683568134}
+  - {fileID: 92024446}
+  - {fileID: 1634908292}
+  - {fileID: 1844319572}
+  weightDecayFactor: 0.3
+  tierConfigs:
+  - tier: 0
+    displayName: Normal
+    baseCooldown: 3
+    enableAtDifficulty: 0
+    minMultiplier: 0.6
+  - tier: 1
+    displayName: Elite I
+    baseCooldown: 10
+    enableAtDifficulty: 1
+    minMultiplier: 0.8
+  - tier: 2
+    displayName: Elite II
+    baseCooldown: 20
+    enableAtDifficulty: 2
+    minMultiplier: 0.85
+  - tier: 3
+    displayName: Elite III
+    baseCooldown: 30
+    enableAtDifficulty: 3
+    minMultiplier: 0.9
 --- !u!4 &457758186
 Transform:
   m_ObjectHideFlags: 0
@@ -5006,6 +5043,43 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &457758187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 457758184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a55a3498e538447468022f5585f20552, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TimerManager
+  useUnscaledTime: 1
+  secondsToNormal: 30
+  secondsToMedium: 90
+  secondsToHard: 180
+  autoDifficultyEnabled: 1
+  elapsedSeconds: 0
+--- !u!114 &457758188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 457758184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6447a5809df734f4a871fd4a4d0e263b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerStatsManager
+  health: 3
+  maxBullets: 6
+  currentBullets: 6
+  isReloading: 0
+  isInForcedPOV: 0
+  isBinded: 0
+  isParalyzed: 0
 --- !u!1001 &465921410
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7433,6 +7507,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 683568135}
+  - component: {fileID: 683568136}
   m_Layer: 0
   m_Name: EnemySpawnPoint
   m_TagString: Untagged
@@ -7458,6 +7533,19 @@ Transform:
   - {fileID: 363493162}
   m_Father: {fileID: 2099235061}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &683568136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 683568134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 707c5e22af4772e449fc78c7df6b52ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemySpawnerManager
+  enemyTierSO: {fileID: 11400000, guid: a5266dd589c1cf347897eb0b8300c06a, type: 2}
 --- !u!1001 &688267588
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8857,11 +8945,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9051238300485817969, guid: 2f6c4572e07a60b43b00e1c4f489a806, type: 3}
   m_PrefabInstance: {fileID: 813821162}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &817053418 stripped
+--- !u!1 &817053418
 GameObject:
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 2280411229428502720, guid: bc27e0b53c5cc68488d5a38864a285ca, type: 3}
-  m_PrefabInstance: {fileID: 1796805204}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 817053419}
+  m_Layer: 0
+  m_Name: 
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &817053419
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 817053418}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &819202991
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17432,6 +17546,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1634908293}
+  - component: {fileID: 1634908294}
   m_Layer: 0
   m_Name: EnemySpawnPoint
   m_TagString: Untagged
@@ -17463,6 +17578,19 @@ Transform:
   - {fileID: 1801906247}
   m_Father: {fileID: 237911380}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1634908294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1634908292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 707c5e22af4772e449fc78c7df6b52ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemySpawnerManager
+  enemyTierSO: {fileID: 11400000, guid: a5266dd589c1cf347897eb0b8300c06a, type: 2}
 --- !u!1001 &1636372293
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19703,6 +19831,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1844319573}
+  - component: {fileID: 1844319574}
   m_Layer: 0
   m_Name: EnemySpawnPoint
   m_TagString: Untagged
@@ -19737,6 +19866,19 @@ Transform:
   - {fileID: 2127128721}
   m_Father: {fileID: 1248747295}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1844319574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1844319572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 707c5e22af4772e449fc78c7df6b52ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemySpawnerManager
+  enemyTierSO: {fileID: 11400000, guid: a5266dd589c1cf347897eb0b8300c06a, type: 2}
 --- !u!1 &1845165824
 GameObject:
   m_ObjectHideFlags: 0
@@ -21778,11 +21920,9 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -16.680002, y: 3.101, z: -41.29}
-  m_LocalPosition: {x: -16.680002, y: 3.101, z: -41.29}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2006505668
@@ -21797,7 +21937,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19a12fbd74c547d46a607bdb1f140953, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerCamera
-  player: {fileID: 2006505666}
   mainCamera: {fileID: 1743177883}
   spinDuration: 0.5
   spinCurve:
@@ -21833,6 +21972,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  currentDirection: 0
 --- !u!114 &2006505669
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21906,6 +22046,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 1f12a0dd-6cf2-45cf-8b83-a09a284af141
     m_ActionName: 'InGame/Reload[/Keyboard/r]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 89ad92fc-a8da-42db-ae93-5b614022c5cc
+    m_ActionName: 'InGame/DEBUG_GetHit[/Keyboard/backspace]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: InGame
@@ -21924,14 +22068,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gun
   gunAudio: {fileID: 2006505672}
-  maxBullets: 1000
-  currentBullets: 0
-  isReloading: 0
+  UDPReceiver: {fileID: 0}
+  gyroCursor: {fileID: 0}
+  isGyroEnabled: 0
   reloadDuration: 1
   bindDuration: 2
-  isBinded: 0
   paralyzeDuration: 2
-  isParalyzed: 0
 --- !u!82 &2006505671
 AudioSource:
   m_ObjectHideFlags: 0
@@ -23448,6 +23590,7 @@ Transform:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 817053419}
   - {fileID: 1743177886}
   - {fileID: 2099235061}
   - {fileID: 243905006}
