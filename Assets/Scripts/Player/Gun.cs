@@ -77,6 +77,10 @@ public class Gun : MonoBehaviour
 
             gunAudio.PlayShootAudio();
             PlayerStatsManager.instance.currentBullets--;
+            if (PlayerStatsManager.instance.currentBullets <= 0)
+            {
+                StartCoroutine(ReloadCoroutine());
+            }
             Debug.Log("Bullets left: " + PlayerStatsManager.instance.currentBullets);
         }
     }
@@ -84,15 +88,16 @@ public class Gun : MonoBehaviour
     {
         if (context.performed 
             && !PlayerStatsManager.instance.isBinded 
-            && !PlayerStatsManager.instance.isParalyzed)
+            && !PlayerStatsManager.instance.isParalyzed
+            && PlayerStatsManager.instance.currentBullets < PlayerStatsManager.instance.maxBullets - 1)
         {
-            gunAudio.PlayReloadAudio();
             StartCoroutine(ReloadCoroutine());
         }
     }
 
     IEnumerator ReloadCoroutine()
     {
+        gunAudio.PlayReloadAudio();
         PlayerStatsManager.instance.isReloading = true;
         yield return new WaitForSeconds(reloadDuration);
         PlayerStatsManager.instance.currentBullets = PlayerStatsManager.instance.maxBullets;
