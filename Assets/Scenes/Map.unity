@@ -8857,6 +8857,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9051238300485817969, guid: 2f6c4572e07a60b43b00e1c4f489a806, type: 3}
   m_PrefabInstance: {fileID: 813821162}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &817053418 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2280411229428502720, guid: bc27e0b53c5cc68488d5a38864a285ca, type: 3}
+  m_PrefabInstance: {fileID: 1796805204}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &819202991
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21773,9 +21778,11 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -16.680002, y: 3.101, z: -41.29}
+  m_LocalPosition: {x: -16.680002, y: 3.101, z: -41.29}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
+  m_Father: {fileID: 0}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2006505668
@@ -21917,7 +21924,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gun
   gunAudio: {fileID: 2006505672}
-  maxBullets: 6
+  maxBullets: 1000
   currentBullets: 0
   isReloading: 0
   reloadDuration: 1

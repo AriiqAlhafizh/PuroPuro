@@ -2,7 +2,8 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public abstract class EnemyBehavior : MonoBehaviour
+
+public class EnemyBehavior : MonoBehaviour
 {
     [SerializeField] protected EnemyStatsSO enemyStats;
     [SerializeField] protected float offset = 0.5f;
@@ -14,11 +15,14 @@ public abstract class EnemyBehavior : MonoBehaviour
     [SerializeField] protected RuntimeAnimatorController idleController;
     [SerializeField] protected RuntimeAnimatorController deathController;
 
+    [SerializeField] protected int score = 50;
+
     protected float idleDuration;
     protected float walkDuration;
     protected float walkSpeed;
 
     protected Vector3 dir;
+    protected Vector3 endPos;
     protected Camera cam;
     protected Animator animator;
 
@@ -54,8 +58,15 @@ public abstract class EnemyBehavior : MonoBehaviour
         float elapsed = 0f;
         OnWalkStart();
 
-        while (elapsed < walkDuration - offset)
+        while (elapsed < walkDuration)
         {
+            float distance = Vector3.Distance(transform.position, endPos);
+
+            if(distance < offset)
+            {
+                break;
+            }
+
             float step = walkSpeed * Time.deltaTime;
 
             if (dir != Vector3.zero)
@@ -119,7 +130,7 @@ public abstract class EnemyBehavior : MonoBehaviour
         }
 
         Vector3 chosenDir;
-        Vector3 endPos;
+        
         if (Mathf.Abs(delta.x) > Mathf.Abs(delta.z))
         {
             chosenDir = new Vector3(Mathf.Sign(delta.x), 0f, 0f);
@@ -140,18 +151,29 @@ public abstract class EnemyBehavior : MonoBehaviour
         return chosenDir;
     }
 
-    protected virtual void OnSpawn() { }
+    protected virtual void OnSpawn() { ApplyController(spawnController); }
 
-    protected virtual void OnWalkStart() { }
+    protected virtual void OnWalkStart() { ApplyController(walkController); }
 
     protected virtual void OnWalkEnd() { }
+    protected virtual void OnIdleEnter() { ApplyController(idleController); }
 
-    protected virtual void OnIdleEnter() { }
-
-    protected virtual void OnAttack() { }
+    protected virtual void OnAttack()
+    {
+        ApplyController(attackController);
+    }
 
     protected virtual void AttackLand()
     {
         PlayerStatsManager.instance.TakeDamage();
+    }
+
+    public virtual void OnBeingHit() {
+        StopAllCoroutines();
+        OnDeath();
+    }
+    protected virtual void OnDeath() 
+    {
+        Destroy(gameObject);
     }
 }
