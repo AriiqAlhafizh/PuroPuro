@@ -50,9 +50,9 @@ public class Gun : MonoBehaviour
             ? Camera.main.ScreenPointToRay(gyroCursor.crosshair.position)
             : Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
 
-            Debug.DrawRay(ray.origin, ray.direction * 10f, Color.red, 1f);
+            Debug.DrawRay(ray.origin, ray.direction * 20f, Color.red, 1f);
 
-            if (Physics.Raycast(ray, out RaycastHit hit, 10f))
+            if (Physics.Raycast(ray, out RaycastHit hit, 20f))
             {
                 if (hit.collider.CompareTag("Enemy"))
                 {
