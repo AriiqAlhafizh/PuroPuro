@@ -6,6 +6,9 @@ public class Gun : MonoBehaviour
 {
     [Header("References")]
     public GunAudio gunAudio;
+    public UDPReceiver UDPReceiver;
+    public GyroCursor gyroCursor;
+    public bool isGyroEnabled = false;
 
     [Header("Settings")]
     public float reloadDuration = .5f;
@@ -18,23 +21,46 @@ public class Gun : MonoBehaviour
     {
         PlayerStatsManager.instance.currentBullets = PlayerStatsManager.instance.maxBullets;
     }
+
+    private bool previousTriggerPressed = false;
+
+    private void Update()
+    {
+        // Detect rising edge: triggerPressed goes from false to true
+        if (UDPReceiver.triggerPressed && !previousTriggerPressed)
+        {
+            Shoot();
+        }
+        previousTriggerPressed = UDPReceiver.triggerPressed;
+    }
     public void Shoot(InputAction.CallbackContext context)
     {
-        if (context.performed 
-            && PlayerStatsManager.instance.currentBullets > 0 
-            && !PlayerStatsManager.instance.isReloading 
+        if (context.performed)
+        {
+            Shoot();
+        }
+    }
+    public void Shoot()
+    {
+        if (PlayerStatsManager.instance.currentBullets > 0
+            && !PlayerStatsManager.instance.isReloading
             && !PlayerStatsManager.instance.isParalyzed)
         {
-            Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
+            Ray ray = isGyroEnabled
+            ? Camera.main.ScreenPointToRay(gyroCursor.crosshair.position)
+            : Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
+
+            Debug.DrawRay(ray.origin, ray.direction * 10f, Color.red, 1f);
+
             if (Physics.Raycast(ray, out RaycastHit hit, 10f))
             {
-                if (hit.collider.CompareTag("Enemy")) 
+                if (hit.collider.CompareTag("Enemy"))
                 {
                     Hitbox type = hit.collider.GetComponent<HitboxType>().hitbox;
                     if (type == Hitbox.Body) // hit body
                     {
                         ScoreManager.instance.IncreaseScore(50);
-                    } 
+                    }
                     else // hit head
                     {
                         ScoreManager.instance.IncreaseScore(100);
