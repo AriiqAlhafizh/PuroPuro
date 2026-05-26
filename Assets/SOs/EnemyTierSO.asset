@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 883db180e5661fa47b342a91fbea1b47, type: 3}
+  m_Name: EnemyTierSO
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyTierSO
+  normalEnemyPrefab:
+  - {fileID: 224039418859698243, guid: ec934c4e1a622f047bbe701098997cac, type: 3}
+  - {fileID: 2792594256196821630, guid: a9dacd25835057f4b8a55fcb5e69ccc0, type: 3}
+  tier2EnemyPrefab:
+  - {fileID: 2792594256196821630, guid: 62851674524e1d347b3c55ec0cf1ec5c, type: 3}
+  tier3EnemyPrefab:
+  - {fileID: 2792594256196821630, guid: 6ae7358abd36e6f49805133159e039fc, type: 3}
+  tier4EnemyPrefab:
+  - {fileID: 8094233446992353698, guid: 0d7fefd2f89a59b4f9ecb8c1443aff52, type: 3}

@@ -3,10 +3,10 @@ using UnityEngine;
 
 public enum Difficulty
 {
-    Easy,
-    Normal,
-    Medium,
-    Hard
+    Easy = 0,
+    Normal = 1,
+    Medium = 2,
+    Hard = 3
 }
 
 public class TimerManager : MonoBehaviour
