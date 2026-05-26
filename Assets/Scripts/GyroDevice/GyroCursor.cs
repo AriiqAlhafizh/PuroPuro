@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class GyroCursor : MonoBehaviour
 {
-    public UDPReceiver udp;
+    public UDPManager udp;
 
     public RectTransform crosshair;
 

@@ -6,9 +6,8 @@ public class Gun : MonoBehaviour
 {
     [Header("References")]
     public GunAudio gunAudio;
-    public UDPReceiver UDPReceiver;
+    public UDPManager UDPManager;
     public GyroCursor gyroCursor;
-    public bool isGyroEnabled = false;
 
     [Header("Settings")]
     public float reloadDuration = .5f;
@@ -27,15 +26,16 @@ public class Gun : MonoBehaviour
     private void Update()
     {
         // Detect rising edge: triggerPressed goes from false to true
-        if (UDPReceiver.triggerPressed && !previousTriggerPressed)
+        if (UDPManager.triggerPressed && !previousTriggerPressed)
         {
             Shoot();
         }
-        previousTriggerPressed = UDPReceiver.triggerPressed;
+        previousTriggerPressed = UDPManager.triggerPressed;
+
     }
     public void Shoot(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (context.performed && !ControlManager.instance.isGyroEnabled)
         {
             Shoot();
         }
@@ -46,7 +46,7 @@ public class Gun : MonoBehaviour
             && !PlayerStatsManager.instance.isReloading
             && !PlayerStatsManager.instance.isParalyzed)
         {
-            Ray ray = isGyroEnabled
+            Ray ray = ControlManager.instance.isGyroEnabled
             ? Camera.main.ScreenPointToRay(gyroCursor.crosshair.position)
             : Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
 
@@ -81,12 +81,17 @@ public class Gun : MonoBehaviour
             {
                 StartCoroutine(ReloadCoroutine());
             }
+
+            UDPManager.SendAmmo(PlayerStatsManager.instance.currentBullets);
+
+            // Debug
             Debug.Log("Bullets left: " + PlayerStatsManager.instance.currentBullets);
         }
     }
     public void Reload(InputAction.CallbackContext context)
     {
         if (context.performed 
+            && !PlayerStatsManager.instance.isReloading
             && !PlayerStatsManager.instance.isBinded 
             && !PlayerStatsManager.instance.isParalyzed
             && PlayerStatsManager.instance.currentBullets < PlayerStatsManager.instance.maxBullets - 1)
@@ -100,6 +105,7 @@ public class Gun : MonoBehaviour
         gunAudio.PlayReloadAudio();
         PlayerStatsManager.instance.isReloading = true;
         yield return new WaitForSeconds(reloadDuration);
+        UDPManager.SendAmmo(PlayerStatsManager.instance.currentBullets);
         PlayerStatsManager.instance.currentBullets = PlayerStatsManager.instance.maxBullets;
         PlayerStatsManager.instance.isReloading = false;
         Debug.Log("Reloaded! Bullets: " + PlayerStatsManager.instance.currentBullets);
