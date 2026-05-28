@@ -82,7 +82,7 @@ public class Gun : MonoBehaviour
                 StartCoroutine(ReloadCoroutine());
             }
 
-            UDPManager.SendAmmo(PlayerStatsManager.instance.currentBullets);
+            UDPManager.SendPlayerData(PlayerStatsManager.instance.currentBullets, PlayerStatsManager.instance.health);
 
             // Debug
             Debug.Log("Bullets left: " + PlayerStatsManager.instance.currentBullets);
@@ -105,9 +105,9 @@ public class Gun : MonoBehaviour
         gunAudio.PlayReloadAudio();
         PlayerStatsManager.instance.isReloading = true;
         yield return new WaitForSeconds(reloadDuration);
-        UDPManager.SendAmmo(PlayerStatsManager.instance.currentBullets);
         PlayerStatsManager.instance.currentBullets = PlayerStatsManager.instance.maxBullets;
         PlayerStatsManager.instance.isReloading = false;
+        UDPManager.SendPlayerData(PlayerStatsManager.instance.currentBullets, PlayerStatsManager.instance.health);
         Debug.Log("Reloaded! Bullets: " + PlayerStatsManager.instance.currentBullets);
     }
 
