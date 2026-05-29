@@ -8,9 +8,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 220507679045582581, guid: 970a0e0414fa8be4695cbe8c3d95afd7, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 3923254535711164170, guid: 970a0e0414fa8be4695cbe8c3d95afd7, type: 3}
       propertyPath: m_Name
       value: Head
+      objectReference: {fileID: 0}
+    - target: {fileID: 5330119020500467392, guid: 970a0e0414fa8be4695cbe8c3d95afd7, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 6009299949102516564, guid: 970a0e0414fa8be4695cbe8c3d95afd7, type: 3}
       propertyPath: m_LocalPosition.y
@@ -64,6 +72,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Zombie
       objectReference: {fileID: 0}
+    - target: {fileID: 6660184903045082040, guid: 970a0e0414fa8be4695cbe8c3d95afd7, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 7532398454791767131, guid: 970a0e0414fa8be4695cbe8c3d95afd7, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 8004348354846919071, guid: 970a0e0414fa8be4695cbe8c3d95afd7, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -71,6 +91,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6660184903045082040, guid: 970a0e0414fa8be4695cbe8c3d95afd7, type: 3}
       insertIndex: 1
       addedObject: {fileID: 6351066307248700668}
+    - targetCorrespondingSourceObject: {fileID: 8004348354846919071, guid: 970a0e0414fa8be4695cbe8c3d95afd7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9055388492964230915}
+    - targetCorrespondingSourceObject: {fileID: 7532398454791767131, guid: 970a0e0414fa8be4695cbe8c3d95afd7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 157088735983498200}
   m_SourcePrefab: {fileID: 100100000, guid: 970a0e0414fa8be4695cbe8c3d95afd7, type: 3}
 --- !u!1 &224039418859698243 stripped
 GameObject:
@@ -96,7 +122,44 @@ MonoBehaviour:
   attackController: {fileID: 22100000, guid: e0964a86e58371546a7538cdefa1b62f, type: 2}
   idleController: {fileID: 9100000, guid: d0635c5725ebf5c49ba6eee6b99dadb6, type: 2}
   deathController: {fileID: 22100000, guid: d86f425e09bd3ff4fa0e23cbd09347a6, type: 2}
+  score: 50
   EnemyStats:
   - {fileID: 11400000, guid: f5df5c58421337b4bbcd7272e88aeaf2, type: 2}
   - {fileID: 11400000, guid: 70f6cfb194553c44fb895d1ce4d4d1e9, type: 2}
   - {fileID: 11400000, guid: 644bd5043dbf5ad478bf8ee6aec1754f, type: 2}
+--- !u!1 &3486736230049700452 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8004348354846919071, guid: 970a0e0414fa8be4695cbe8c3d95afd7, type: 3}
+  m_PrefabInstance: {fileID: 6878764971249554427}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &9055388492964230915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3486736230049700452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2453a70c6d7d3a47a1d881b63734634, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HitboxType
+  hitbox: 1
+--- !u!1 &4034728526046975904 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7532398454791767131, guid: 970a0e0414fa8be4695cbe8c3d95afd7, type: 3}
+  m_PrefabInstance: {fileID: 6878764971249554427}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &157088735983498200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4034728526046975904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2453a70c6d7d3a47a1d881b63734634, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HitboxType
+  hitbox: 0

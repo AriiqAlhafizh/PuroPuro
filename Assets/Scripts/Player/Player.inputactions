@@ -32,6 +32,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "DEBUG_GetHit",
+                    "type": "Button",
+                    "id": "89ad92fc-a8da-42db-ae93-5b614022c5cc",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Change Control",
+                    "type": "Button",
+                    "id": "c0f2c8eb-e29a-4a56-8a6c-80ad973dd2d7",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -126,11 +144,33 @@
                 {
                     "name": "",
                     "id": "8383866e-6a00-4bc5-935f-8a32e6345a05",
-                    "path": "<Keyboard>/r",
+                    "path": "<Mouse>/rightButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Reload",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "79cf8262-5ba2-4fd3-b3bd-a552aba9c4ce",
+                    "path": "<Keyboard>/backspace",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DEBUG_GetHit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9244b983-d817-479a-b134-4762df047d54",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Change Control",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

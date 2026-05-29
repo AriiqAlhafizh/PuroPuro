@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
+
 public class EnemyBehavior : MonoBehaviour
 {
     [SerializeField] protected EnemyStatsSO enemyStats;
@@ -13,6 +14,8 @@ public class EnemyBehavior : MonoBehaviour
     [SerializeField] protected RuntimeAnimatorController attackController;
     [SerializeField] protected RuntimeAnimatorController idleController;
     [SerializeField] protected RuntimeAnimatorController deathController;
+
+    [SerializeField] protected int score = 50;
 
     protected float idleDuration;
     protected float walkDuration;
@@ -166,11 +169,11 @@ public class EnemyBehavior : MonoBehaviour
     }
 
     public virtual void OnBeingHit() {
-       StopAllCoroutines();
-       OnDeath();
+        StopAllCoroutines();
+        OnDeath();
     }
     protected virtual void OnDeath() 
-    { 
-       Destroy(gameObject);
+    {
+        Destroy(gameObject);
     }
 }
