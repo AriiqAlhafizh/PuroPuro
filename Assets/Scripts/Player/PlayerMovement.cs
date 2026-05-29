@@ -22,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
         { Direction.Left, -90f }
     };
     
-    private bool isSpinning = false;
+    public bool isSpinning = false;
 
     public void CameraMovement(InputAction.CallbackContext context)
     {
@@ -43,23 +43,39 @@ public class PlayerMovement : MonoBehaviour
                 // Update currentDirection with wrap-around
                 int newDir = ((int)currentDirection + directionDelta) % 4;
                 if (newDir < 0) newDir += 4;
-                currentDirection = (Direction)newDir;
+                Direction nextDirection = (Direction)newDir;
+                currentDirection = nextDirection;
 
-                float angle = direction[(Direction)(((int)Direction.Up + directionDelta + 4) % 4)];
-                StartCoroutine(SpinCamera(angle));
+                SpinCamera(nextDirection);
             }
         }
     }
 
-    private IEnumerator SpinCamera(float angle)
+    public void SpinCamera(Direction targetDirection)
+    {
+        if (!isSpinning && currentDirection != targetDirection)
+        {
+            StartCoroutine(SpinCameraToDirection(targetDirection));
+        }
+    }
+
+    private IEnumerator SpinCameraToDirection(Direction targetDirection)
     {
         isSpinning = true;
 
-        float duration = spinDuration; // Use fixed duration
+        float duration = spinDuration;
         float elapsed = 0f;
 
-        Quaternion startCamRot = mainCamera.transform.rotation;
-        Quaternion endCamRot = Quaternion.AngleAxis(angle, Vector3.up) * startCamRot;
+        // Get the camera's current Y rotation as the start angle
+        float startAngle = mainCamera.transform.eulerAngles.y;
+        float endAngle = direction[targetDirection];
+
+        // Handle shortest rotation direction
+        float angleDelta = Mathf.DeltaAngle(startAngle, endAngle);
+        float finalEndAngle = startAngle + angleDelta;
+
+        Quaternion startCamRot = Quaternion.Euler(0, startAngle, 0);
+        Quaternion endCamRot = Quaternion.Euler(0, finalEndAngle, 0);
 
         while (elapsed < duration)
         {
@@ -73,6 +89,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         mainCamera.transform.rotation = endCamRot;
+        currentDirection = targetDirection;
         isSpinning = false;
     }
 }
