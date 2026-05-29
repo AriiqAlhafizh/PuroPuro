@@ -4784,6 +4784,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9051238300485817969, guid: 2f6c4572e07a60b43b00e1c4f489a806, type: 3}
   m_PrefabInstance: {fileID: 416884204}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &426302537 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2683356076117566556, guid: e6a6cdbd030cc22478e904d1a8d19a3b, type: 3}
+  m_PrefabInstance: {fileID: 2004001330}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fe4d9753963496469000dc581726ac2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UDPReceiver
 --- !u!1001 &434198156
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8894,37 +8905,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9051238300485817969, guid: 2f6c4572e07a60b43b00e1c4f489a806, type: 3}
   m_PrefabInstance: {fileID: 813821162}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &817053418
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 817053419}
-  m_Layer: 0
-  m_Name: 
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &817053419
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 817053418}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &819202991
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21998,6 +21978,18 @@ PrefabInstance:
       propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 2006096945759580782, guid: e6a6cdbd030cc22478e904d1a8d19a3b, type: 3}
+      propertyPath: UDPManager
+      value: 
+      objectReference: {fileID: 426302537}
+    - target: {fileID: 2006096945759580782, guid: e6a6cdbd030cc22478e904d1a8d19a3b, type: 3}
+      propertyPath: reloadDuration
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2683356076117566556, guid: e6a6cdbd030cc22478e904d1a8d19a3b, type: 3}
+      propertyPath: esp32IP
+      value: 192.168.1.15
+      objectReference: {fileID: 0}
     - target: {fileID: 3230121053733389787, guid: e6a6cdbd030cc22478e904d1a8d19a3b, type: 3}
       propertyPath: crosshair
       value: 
@@ -23558,7 +23550,6 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 817053419}
   - {fileID: 2004001330}
   - {fileID: 2099235061}
   - {fileID: 243905006}
