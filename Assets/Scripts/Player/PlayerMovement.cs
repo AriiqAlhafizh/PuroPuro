@@ -3,6 +3,7 @@ using UnityEngine.InputSystem;
 using System.Collections;
 using System.Collections.Generic;
 
+public enum Lane { Up, Right, Down, Left }
 public class PlayerMovement : MonoBehaviour
 {
     [Header("References")]
@@ -12,14 +13,13 @@ public class PlayerMovement : MonoBehaviour
     public float spinDuration = 0.5f; // Duration in seconds for any spin
     public AnimationCurve spinCurve;
 
-    public enum Direction { Up, Right, Down, Left }
-    public Direction currentDirection = Direction.Up;
-    readonly Dictionary<Direction, float> direction = new()
+    public Lane currentLane = Lane.Up;
+    readonly Dictionary<Lane, float> lane = new()
     {
-        { Direction.Up, 0f },
-        { Direction.Right, 90f },
-        { Direction.Down, 180f },
-        { Direction.Left, -90f }
+        { Lane.Up, 0f },
+        { Lane.Right, 90f },
+        { Lane.Down, 180f },
+        { Lane.Left, -90f }
     };
     
     public bool isSpinning = false;
@@ -40,26 +40,27 @@ public class PlayerMovement : MonoBehaviour
 
             if (directionDelta != 0)
             {
-                // Update currentDirection with wrap-around
-                int newDir = ((int)currentDirection + directionDelta) % 4;
-                if (newDir < 0) newDir += 4;
-                Direction nextDirection = (Direction)newDir;
-                currentDirection = nextDirection;
+                // Compute next lane with wrap-around, but don't set currentLane yet
+                // — SpinCameraToLane will update currentLane when the spin finishes.
+                int newLane = ((int)currentLane + directionDelta) % 4;
+                if (newLane < 0) newLane += 4;
+                Lane nextLane = (Lane)newLane;
 
-                SpinCamera(nextDirection);
+                SpinCamera(nextLane);
             }
         }
     }
 
-    public void SpinCamera(Direction targetDirection)
+    public void SpinCamera(Lane targetLane)
     {
-        if (!isSpinning && currentDirection != targetDirection)
+        if (!isSpinning && currentLane != targetLane)
         {
-            StartCoroutine(SpinCameraToDirection(targetDirection));
+            StartCoroutine(SpinCameraToLane(targetLane));
+
         }
     }
 
-    private IEnumerator SpinCameraToDirection(Direction targetDirection)
+    private IEnumerator SpinCameraToLane(Lane targetLane)
     {
         isSpinning = true;
 
@@ -68,7 +69,7 @@ public class PlayerMovement : MonoBehaviour
 
         // Get the camera's current Y rotation as the start angle
         float startAngle = mainCamera.transform.eulerAngles.y;
-        float endAngle = direction[targetDirection];
+        float endAngle = lane[targetLane];
 
         // Handle shortest rotation direction
         float angleDelta = Mathf.DeltaAngle(startAngle, endAngle);
@@ -89,7 +90,8 @@ public class PlayerMovement : MonoBehaviour
         }
 
         mainCamera.transform.rotation = endCamRot;
-        currentDirection = targetDirection;
+        currentLane = targetLane;
+        PlayerStatsManager.instance.ChangeLane(currentLane);
         isSpinning = false;
     }
 }
