@@ -1291,8 +1291,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8872001946767115032}
-  - component: {fileID: 4357918015260082904}
-  - component: {fileID: 327004293181047867}
+  - component: {fileID: 3245073080620647729}
+  - component: {fileID: 6070119861765966883}
   m_Layer: 0
   m_Name: Demon
   m_TagString: Enemy
@@ -1319,7 +1319,7 @@ Transform:
   - {fileID: 6098715305647511480}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4357918015260082904
+--- !u!114 &3245073080620647729
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1332,14 +1332,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyBehavior_Brawler
   enemyStats: {fileID: 11400000, guid: 0a488d6844e485040ace6fc2562611d2, type: 2}
-  offset: 2.3
+  offset: 3
   spawnController: {fileID: 22100000, guid: 7ca9bb784d3bca848a203c3a9d0eaf9f, type: 2}
   walkController: {fileID: 22100000, guid: 6cc4de54c1239c840ab98ec9f091249a, type: 2}
-  attackController: {fileID: 22100000, guid: e0964a86e58371546a7538cdefa1b62f, type: 2}
+  attackController: {fileID: 22100000, guid: 096f06d48f5c476418ea81326193470e, type: 2}
   idleController: {fileID: 9100000, guid: d0635c5725ebf5c49ba6eee6b99dadb6, type: 2}
-  deathController: {fileID: 22100000, guid: d86f425e09bd3ff4fa0e23cbd09347a6, type: 2}
-  score: 50
---- !u!95 &327004293181047867
+  deathController: {fileID: 22100000, guid: bdc4392bafa793e44abbad15c93185a7, type: 2}
+  deathPulseCount: 3
+  deathPulseDuration: 0.3
+--- !u!95 &6070119861765966883
 Animator:
   serializedVersion: 7
   m_ObjectHideFlags: 0

@@ -14,7 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyTierSO
   normalEnemyPrefab:
   - {fileID: 224039418859698243, guid: ec934c4e1a622f047bbe701098997cac, type: 3}
-  - {fileID: 2792594256196821630, guid: a9dacd25835057f4b8a55fcb5e69ccc0, type: 3}
   tier2EnemyPrefab:
   - {fileID: 2792594256196821630, guid: 62851674524e1d347b3c55ec0cf1ec5c, type: 3}
   tier3EnemyPrefab:

@@ -1,19 +1,91 @@
 using System;
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
-public class EnemyBehavior_DontLook : MonoBehaviour
+public class EnemyBehavior_DontLook : EnemyBehavior
 {
     private Lane currentLane = Lane.Down;
     private bool isLooking = false;
 
-    private Camera mainCamera;
-
-    void Start()
+    [SerializeField] private float heightOffset = 1f;
+    protected override void Start()
     {
-        mainCamera = Camera.main;
+        if (enemyStats == null)
+        {
+            Debug.LogWarning("EnemyBehavior: enemyStats is not assigned.");
+            return;
+        }
+
+        animator = GetComponent<Animator>();
+
+        cam = Camera.main;
+
+        idleDuration = enemyStats.IdleDuration;
+        walkDuration = enemyStats.WalkDuration;
+
+        transform.position = GetWalkDirection();
 
         PlayerStatsManager.instance.OnLaneChange += OnPlayerLaneChange;
+
+        StartCoroutine(SpawnPhase());
+    }
+    protected override IEnumerator SpawnPhase()
+    {
+        OnSpawn();
+        yield return null;
+    }
+    protected override void OnSpawn() {  
+        
+    }
+
+    protected override Vector3 GetWalkDirection()
+    {
+        if (cam == null)
+            cam = Camera.main;
+
+        if (cam == null)
+            return Vector3.zero;
+
+        Vector3 targetPos = cam.transform.position;
+        Vector3 delta = targetPos - transform.position;
+
+        Vector3 lookDir = new Vector3(delta.x, 0f, delta.z);
+        if (lookDir.sqrMagnitude > 0.0001f)
+        {
+            transform.rotation = Quaternion.LookRotation(lookDir);
+        }
+
+
+        if (Mathf.Abs(delta.x) > Mathf.Abs(delta.z))
+        {
+            if(delta.x > 0)
+            {
+                offset = -offset;
+                currentLane = Lane.Left;
+            }
+            else
+            {
+                currentLane = Lane.Right;
+            }
+            endPos = new Vector3(targetPos.x + offset, transform.position.y + heightOffset, transform.position.z);
+        }
+        else
+        {
+            if (delta.z > 0)
+            {
+                offset = -offset;
+                currentLane = Lane.Down;
+            }
+            else
+            {
+                currentLane = Lane.Up;
+            }
+            endPos = new Vector3(transform.position.x, transform.position.y + heightOffset, targetPos.z + offset);
+        }
+
+        return endPos;
     }
 
     void OnDestroy()
@@ -41,15 +113,9 @@ public class EnemyBehavior_DontLook : MonoBehaviour
         float duration = 1f;
         float elapsed = 0f;
 
-        if (mainCamera == null)
-            mainCamera = Camera.main;
-
         while (elapsed < duration)
         {
-            if (mainCamera == null)
-                yield break;
-
-            Vector3 direction = mainCamera.transform.position - transform.position;
+            Vector3 direction = cam.transform.position - transform.position;
             if (direction.sqrMagnitude > 0.0001f)
             {
                 Quaternion target = Quaternion.LookRotation(direction, Vector3.up);
@@ -61,8 +127,8 @@ public class EnemyBehavior_DontLook : MonoBehaviour
         }
 
         // Ensure exact facing at the end
-        if (mainCamera != null)
-            transform.LookAt(mainCamera.transform);
+        if (cam != null)
+            transform.LookAt(cam.transform);
 
         Debug.Log("EyeBat attacked the player.");
     }

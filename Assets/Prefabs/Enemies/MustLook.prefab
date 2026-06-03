@@ -686,6 +686,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3255953556716913822}
   - component: {fileID: 8921442118748462820}
+  - component: {fileID: 2703794000428391195}
   m_Layer: 0
   m_Name: MustLook
   m_TagString: Untagged
@@ -720,7 +721,7 @@ Animator:
   m_GameObject: {fileID: 2766520990056341028}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: cb57f7c83ae84d046a752b96f7843b2a, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: c44bf825bd7b3de40940f5d0ab25bf5e, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -732,6 +733,23 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2703794000428391195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2766520990056341028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a7f249d0d16c7748b24bfc26f794773, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyBehavior_MustLook
+  enemyStats: {fileID: 11400000, guid: 44871082f013e574c931c162ab49e2b9, type: 2}
+  offset: 5
+  spawnController: {fileID: 22100000, guid: 14a24388f7e985f4688e5e8f06f5f30a, type: 2}
+  idleController: {fileID: 9100000, guid: d0635c5725ebf5c49ba6eee6b99dadb6, type: 2}
+  deathController: {fileID: 22100000, guid: 14a24388f7e985f4688e5e8f06f5f30a, type: 2}
 --- !u!1 &2787789027213459379
 GameObject:
   m_ObjectHideFlags: 0
