@@ -117,12 +117,12 @@ public class UDPManager : MonoBehaviour
     // =========================
     // SEND AMMO TO ESP32
     // =========================
-    public void SendAmmo(int ammo)
+    public void SendPlayerData(int ammo, int hp)
     {
         try
         {
             string message =
-                ammo.ToString();
+                ammo + "," + hp;    
 
             byte[] data =
                 Encoding.UTF8.GetBytes(message);
@@ -135,7 +135,7 @@ public class UDPManager : MonoBehaviour
             );
 
             Debug.Log(
-                "Sent Ammo: " + ammo
+                "Sent : " + message
             );
         }
         catch (System.Exception e)

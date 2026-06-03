@@ -4800,6 +4800,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9051238300485817969, guid: 2f6c4572e07a60b43b00e1c4f489a806, type: 3}
   m_PrefabInstance: {fileID: 416884204}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &426302537 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2683356076117566556, guid: e6a6cdbd030cc22478e904d1a8d19a3b, type: 3}
+  m_PrefabInstance: {fileID: 2004001330}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fe4d9753963496469000dc581726ac2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UDPReceiver
 --- !u!1001 &434198156
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22030,6 +22041,18 @@ PrefabInstance:
     - target: {fileID: 718166985671489288, guid: e6a6cdbd030cc22478e904d1a8d19a3b, type: 3}
       propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2006096945759580782, guid: e6a6cdbd030cc22478e904d1a8d19a3b, type: 3}
+      propertyPath: UDPManager
+      value: 
+      objectReference: {fileID: 426302537}
+    - target: {fileID: 2006096945759580782, guid: e6a6cdbd030cc22478e904d1a8d19a3b, type: 3}
+      propertyPath: reloadDuration
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2683356076117566556, guid: e6a6cdbd030cc22478e904d1a8d19a3b, type: 3}
+      propertyPath: esp32IP
+      value: 192.168.1.15
       objectReference: {fileID: 0}
     - target: {fileID: 3230121053733389787, guid: e6a6cdbd030cc22478e904d1a8d19a3b, type: 3}
       propertyPath: crosshair
