@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EnemyBehavior_Knight : EnemyBehavior
+public class EnemyBehavior_Knight : EnemyBehavior_Normal
 {
     [Header("Knight Settings")]
     [SerializeField] private bool isShielded = true;
