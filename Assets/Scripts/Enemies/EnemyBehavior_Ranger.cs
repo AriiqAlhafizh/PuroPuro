@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class EnemyBehavior_Ranger : EnemyBehavior
+public class EnemyBehavior_Ranger : EnemyBehavior_Normal
 {
     protected override IEnumerator WalkPhase()
     {

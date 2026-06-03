@@ -4,27 +4,85 @@ using UnityEngine;
 
 public class EnemyBehavior_Normal : EnemyBehavior
 {
-    [Header("Normal Enemy Stats List")]
-    [SerializeField] protected List<EnemyStatsSO> EnemyStats;
+    [Header("Animation Controller")]
+    [SerializeField] protected RuntimeAnimatorController spawnController;
+    [SerializeField] protected RuntimeAnimatorController walkController;
+    [SerializeField] protected RuntimeAnimatorController attackController;
+    [SerializeField] protected RuntimeAnimatorController idleController;
+    [SerializeField] protected RuntimeAnimatorController deathController;
 
-    protected override void Start()
+    protected override IEnumerator WalkPhase()
     {
-        int randomIndex = Random.Range(0, EnemyStats.Count);
-        if (randomIndex >= EnemyStats.Count)
+        float elapsed = 0f;
+        OnWalkStart();
+
+        while (elapsed < walkDuration)
         {
-            Debug.LogWarning("EnemyBehavior: randomIndex is out of bounds.");
-            return;
+            float distance = Vector3.Distance(transform.position, endPos);
+
+            if (distance < offset)
+            {
+                break;
+            }
+
+            float step = walkSpeed * Time.deltaTime;
+
+            if (dir != Vector3.zero)
+            {
+                transform.position += dir.normalized * step;
+            }
+
+            elapsed += Time.deltaTime;
+            yield return null;
         }
 
-        animator = GetComponent<Animator>();
+        OnWalkEnd();
 
-        cam = Camera.main;
+        StartCoroutine(IdlePhase());
+    }
 
-        idleDuration = EnemyStats[randomIndex].IdleDuration;
-        walkDuration = EnemyStats[randomIndex].WalkDuration;
+    protected override IEnumerator AttackPhase()
+    {
+        OnAttack();
+        animator.Rebind();
+        yield return new WaitUntil(() => animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f && !animator.IsInTransition(0));
+        OnIdleEnter();
+        yield return new WaitForSeconds(idleDuration);
+        StartCoroutine(IdlePhase());
+    }
 
-        dir = GetWalkDirection();
+    protected void ApplyController(RuntimeAnimatorController controller)
+    {
+        if (animator == null || controller == null)
+            return;
 
-        StartCoroutine(SpawnPhase());
+        if (animator.runtimeAnimatorController != controller)
+        {
+            animator.runtimeAnimatorController = controller;
+        }
+    }
+
+    protected override void OnSpawn() { }
+
+    protected override void OnWalkStart() { ApplyController(walkController); }
+
+    protected override void OnWalkEnd() { }
+    protected override void OnIdleEnter() { ApplyController(idleController); }
+
+    protected override void OnAttack()
+    {
+        ApplyController(attackController);
+    }
+
+    protected override void AttackLand()
+    {
+        PlayerStatsManager.instance.TakeDamage();
+    }
+
+    protected override void OnDeath()
+    {
+        StopAllCoroutines();
+        ApplyController(deathController);
+        Destroy(gameObject, 0.5f);
     }
 }

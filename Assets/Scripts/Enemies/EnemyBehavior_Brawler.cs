@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class EnemyBehavior_Brawler : EnemyBehavior
+public class EnemyBehavior_Brawler : EnemyBehavior_Normal
 {
     protected override IEnumerator SpawnPhase()
     {
@@ -45,4 +45,6 @@ public class EnemyBehavior_Brawler : EnemyBehavior
 
         StartCoroutine(AttackPhase());
     }
+
+    protected override void OnSpawn() { ApplyController(spawnController); }
 }
