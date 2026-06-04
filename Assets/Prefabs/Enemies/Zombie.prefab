@@ -121,12 +121,9 @@ MonoBehaviour:
   walkController: {fileID: 22100000, guid: 7dd7a7496197d5840a691bf704fb4ab8, type: 2}
   attackController: {fileID: 22100000, guid: e0964a86e58371546a7538cdefa1b62f, type: 2}
   idleController: {fileID: 9100000, guid: d0635c5725ebf5c49ba6eee6b99dadb6, type: 2}
-  deathController: {fileID: 22100000, guid: d86f425e09bd3ff4fa0e23cbd09347a6, type: 2}
-  score: 50
-  EnemyStats:
-  - {fileID: 11400000, guid: f5df5c58421337b4bbcd7272e88aeaf2, type: 2}
-  - {fileID: 11400000, guid: 70f6cfb194553c44fb895d1ce4d4d1e9, type: 2}
-  - {fileID: 11400000, guid: 644bd5043dbf5ad478bf8ee6aec1754f, type: 2}
+  deathController: {fileID: 22100000, guid: bdc4392bafa793e44abbad15c93185a7, type: 2}
+  deathPulseCount: 3
+  deathPulseDuration: 0.3
 --- !u!1 &3486736230049700452 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8004348354846919071, guid: 970a0e0414fa8be4695cbe8c3d95afd7, type: 3}

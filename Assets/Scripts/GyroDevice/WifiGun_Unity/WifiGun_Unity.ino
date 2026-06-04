@@ -1,6 +1,8 @@
 #include <WiFi.h>
 #include <WiFiUdp.h>
 #include <Wire.h>
+#include <Adafruit_GFX.h>
+#include <Adafruit_SSD1306.h>
 
 #include "I2Cdev.h"
 #include "MPU6050_6Axis_MotionApps20.h"
@@ -24,8 +26,8 @@ const int udpReceivePort = 4211;
 // =========================
 // BUTTON PINS
 // =========================
-#define TRIGGER_BUTTON 4
-#define CAL_BUTTON 5
+#define TRIGGER_BUTTON 32
+#define CAL_BUTTON 33
 
 // =========================
 // MPU VARIABLES
@@ -35,6 +37,29 @@ uint8_t devStatus;
 uint16_t packetSize;
 uint16_t fifoCount;
 uint8_t fifoBuffer[64];
+
+// =========================
+// DISPLAY VARIABLES
+// =========================
+#define SCREEN_WIDTH 128
+#define SCREEN_HEIGHT 64
+
+// =========================
+// HP LEDs
+// =========================
+#define HP_LED_1 16
+#define HP_LED_2 17
+#define HP_LED_3 18
+int hp = 3;
+
+#define OLED_RESET -1
+
+Adafruit_SSD1306 display(
+    SCREEN_WIDTH,
+    SCREEN_HEIGHT,
+    &Wire,
+    OLED_RESET
+);
 
 Quaternion q;
 VectorFloat gravity;
@@ -50,12 +75,34 @@ void setup()
 {
     Serial.begin(115200);
 
+    // LEDs
+    pinMode(HP_LED_1, OUTPUT);
+    pinMode(HP_LED_2, OUTPUT);
+    pinMode(HP_LED_3, OUTPUT);
+
     // Buttons
     pinMode(TRIGGER_BUTTON, INPUT_PULLUP);
     pinMode(CAL_BUTTON, INPUT_PULLUP);
 
     // I2C
     Wire.begin(21, 22);
+
+    if(!display.begin(
+        SSD1306_SWITCHCAPVCC,
+        0x3C
+    ))
+    {
+        Serial.println("OLED failed");
+
+        while(1);
+    }
+
+    display.clearDisplay();
+
+    display.setTextColor(SSD1306_WHITE);
+
+    display.display();
+
     Wire.setClock(400000);
 
     // WiFi
@@ -95,6 +142,9 @@ void setup()
     {
         Serial.println("DMP Initialization Failed!");
     }
+
+    updateOLED();
+    updateHPLEDs();
 }
 
 void loop()
@@ -156,16 +206,22 @@ void loop()
         udp.endPacket();
 
         // Debug
-        Serial.println(packet);
+        // Serial.println(packet);
+        // Serial.print("Trigger: ");
+        // Serial.print(digitalRead(TRIGGER_BUTTON));
 
-        receiveAmmo();
+        // Serial.print(" | Cal: ");
+        // Serial.println(digitalRead(CAL_BUTTON));
+
+        receiveHUDData();
     }
     delay(5);
 }
 
-void receiveAmmo()
+void receiveHUDData()
 {
-    int packetSize = udp.parsePacket();
+    int packetSize =
+        udp.parsePacket();
 
     if(packetSize)
     {
@@ -182,12 +238,70 @@ void receiveAmmo()
             incomingPacket[len] = 0;
         }
 
-        ammo = atoi(incomingPacket);
+        Serial.print("Received: ");
+        Serial.println(incomingPacket);
+
+        // PARSE CSV
+        int receivedAmmo;
+        int receivedHP;
+
+        sscanf(
+            incomingPacket,
+            "%d,%d",
+            &receivedAmmo,
+            &receivedHP
+        );
+
+        ammo = receivedAmmo;
+        hp = receivedHP;
+
+        // UPDATE DEVICES
+        updateOLED();
+        updateHPLEDs();
 
         Serial.print("Ammo: ");
         Serial.println(ammo);
 
-        // TODO:
-        // update OLED / LED display here
+        Serial.print("HP: ");
+        Serial.println(hp);
     }
+}
+
+void updateOLED()
+{
+    display.clearDisplay();
+
+    // TITLE
+    display.setTextSize(1);
+
+    display.setCursor(0,0);
+
+    display.println("AMMO");
+
+    // BIG NUMBER
+    display.setTextSize(4);
+
+    display.setCursor(20,20);
+
+    display.println(ammo);
+
+    display.display();
+}
+
+void updateHPLEDs()
+{
+    digitalWrite(
+        HP_LED_1,
+        hp >= 1
+    );
+
+    digitalWrite(
+        HP_LED_2,
+        hp >= 2
+    );
+
+    digitalWrite(
+        HP_LED_3,
+        hp >= 3
+    );
 }

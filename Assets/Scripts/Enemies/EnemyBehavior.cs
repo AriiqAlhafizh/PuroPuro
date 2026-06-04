@@ -8,14 +8,7 @@ public class EnemyBehavior : MonoBehaviour
     [SerializeField] protected EnemyStatsSO enemyStats;
     [SerializeField] protected float offset = 0.5f;
 
-    [Header("Animation Controller")]
-    [SerializeField] protected RuntimeAnimatorController spawnController;
-    [SerializeField] protected RuntimeAnimatorController walkController;
-    [SerializeField] protected RuntimeAnimatorController attackController;
-    [SerializeField] protected RuntimeAnimatorController idleController;
-    [SerializeField] protected RuntimeAnimatorController deathController;
-
-    [SerializeField] protected int score = 50;
+    protected int score = 50;
 
     protected float idleDuration;
     protected float walkDuration;
@@ -49,35 +42,14 @@ public class EnemyBehavior : MonoBehaviour
     protected virtual IEnumerator SpawnPhase()
     {
         OnSpawn();
-        yield return new WaitUntil(() => animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f && !animator.IsInTransition(0));
+        yield return null;
         StartCoroutine(WalkPhase());
     }
 
     protected virtual IEnumerator WalkPhase()
     {
-        float elapsed = 0f;
         OnWalkStart();
-
-        while (elapsed < walkDuration)
-        {
-            float distance = Vector3.Distance(transform.position, endPos);
-
-            if(distance < offset)
-            {
-                break;
-            }
-
-            float step = walkSpeed * Time.deltaTime;
-
-            if (dir != Vector3.zero)
-            {
-                transform.position += dir.normalized * step;
-            }
-
-            elapsed += Time.deltaTime;
-            yield return null;
-        }
-
+        yield return new WaitForSeconds(walkDuration);
         OnWalkEnd();
 
         StartCoroutine(IdlePhase());
@@ -93,24 +65,9 @@ public class EnemyBehavior : MonoBehaviour
     protected virtual IEnumerator AttackPhase()
     {
         OnAttack();
-        animator.Rebind(); 
-        yield return new WaitUntil(() => animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f && !animator.IsInTransition(0));
-        OnIdleEnter();
-        yield return new WaitForSeconds(idleDuration);
+        yield return null;
         StartCoroutine(IdlePhase());
     }
-
-    protected void ApplyController(RuntimeAnimatorController controller)
-    {
-        if (animator == null || controller == null)
-            return;
-
-        if (animator.runtimeAnimatorController != controller)
-        {
-            animator.runtimeAnimatorController = controller;
-        }
-    }
-
 
     protected virtual Vector3 GetWalkDirection()
     {
@@ -151,21 +108,21 @@ public class EnemyBehavior : MonoBehaviour
         return chosenDir;
     }
 
-    protected virtual void OnSpawn() { ApplyController(spawnController); }
+    protected virtual void OnSpawn() { }
 
-    protected virtual void OnWalkStart() { ApplyController(walkController); }
+    protected virtual void OnWalkStart() { }
 
     protected virtual void OnWalkEnd() { }
-    protected virtual void OnIdleEnter() { ApplyController(idleController); }
+    protected virtual void OnIdleEnter() { }
 
     protected virtual void OnAttack()
     {
-        ApplyController(attackController);
+       
     }
 
     protected virtual void AttackLand()
     {
-        PlayerStatsManager.instance.TakeDamage();
+        
     }
 
     public virtual void OnBeingHit() {
@@ -174,6 +131,8 @@ public class EnemyBehavior : MonoBehaviour
     }
     protected virtual void OnDeath() 
     {
-        Destroy(gameObject);
+        
     }
+
+    
 }
