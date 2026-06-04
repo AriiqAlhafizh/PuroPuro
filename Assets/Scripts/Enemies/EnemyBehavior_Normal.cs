@@ -81,8 +81,14 @@ public class EnemyBehavior_Normal : EnemyBehavior
 
     protected override void OnDeath()
     {
-        StopAllCoroutines();
+        animator.Rebind();
         ApplyController(deathController);
-        Destroy(gameObject, 0.5f);
+    }
+
+    protected override IEnumerator DeathSaquence()
+    {
+        OnDeath();
+        yield return new WaitForSeconds(0.5f);
+        Destroy(gameObject);
     }
 }
