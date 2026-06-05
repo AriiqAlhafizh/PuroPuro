@@ -7,6 +7,7 @@ public class EnemyBehavior_Mummy : EnemyBehavior
 
     private Vector3 startPos;
     private Vector3 targetPos;
+    private Transform rootTransform;
     protected override void Start()
     {
         if (enemyStats == null)
@@ -19,10 +20,12 @@ public class EnemyBehavior_Mummy : EnemyBehavior
 
         cam = Camera.main;
 
+        rootTransform = (transform.parent != null) ? transform.parent : transform;
+
         idleDuration = enemyStats.IdleDuration;
         walkDuration = enemyStats.WalkDuration;
 
-        transform.position = GetWalkDirection();
+        rootTransform.position = GetWalkDirection();
 
         StartCoroutine(SpawnPhase());
     }
@@ -32,18 +35,18 @@ public class EnemyBehavior_Mummy : EnemyBehavior
         OnSpawn();
         float dropDuration = 0.5f; 
         float elapsed = 0f;
-        startPos = transform.position;
+        startPos = rootTransform.position;
         targetPos = startPos - new Vector3(0f, heightOffset + (offset/2), 0f);
 
         while (elapsed < dropDuration)
         {
             elapsed += Time.deltaTime;
             float t = Mathf.Clamp01(elapsed / dropDuration);
-            transform.position = Vector3.Lerp(startPos, targetPos, Mathf.SmoothStep(0f, 1f, t));
+            rootTransform.position = Vector3.Lerp(startPos, targetPos, Mathf.SmoothStep(0f, 1f, t));
             yield return null;
         }
 
-        transform.position = targetPos;
+        rootTransform.position = targetPos;
 
         StartCoroutine(IdlePhase());
     }
@@ -51,8 +54,8 @@ public class EnemyBehavior_Mummy : EnemyBehavior
     protected override IEnumerator AttackPhase()
     {
         OnAttack();
-        yield return new WaitUntil(() => animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f && !animator.IsInTransition(0));
-        OnIdleEnter();
+        yield return new WaitForSeconds(0.2f);
+        AttackLand();
         yield return new WaitUntil(() => animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f && !animator.IsInTransition(0));
         StartCoroutine(LeaveSaquence());
     }
@@ -61,14 +64,14 @@ public class EnemyBehavior_Mummy : EnemyBehavior
     {
         float dropDuration = 0.5f;
         float elapsed = 0f;
-        startPos = transform.position;
+        startPos = rootTransform.position;
         targetPos = startPos + new Vector3(0f, heightOffset + (offset/2), 0f);
 
         while (elapsed < dropDuration)
         {
             elapsed += Time.deltaTime;
             float t = Mathf.Clamp01(elapsed / dropDuration);
-            transform.position = Vector3.Lerp(startPos, targetPos, Mathf.SmoothStep(0f, 1f, t));
+            rootTransform.position = Vector3.Lerp(startPos, targetPos, Mathf.SmoothStep(0f, 1f, t));
             yield return null;
         }
         OnDeath();
@@ -77,7 +80,7 @@ public class EnemyBehavior_Mummy : EnemyBehavior
     {
         float knockDuration = 0.6f;
         float elapsed = 0f;
-        Vector3 start = transform.position;
+        Vector3 start = rootTransform.position;
 
         Vector3 dir;
         dir = (start - cam.transform.position).normalized;
@@ -94,11 +97,11 @@ public class EnemyBehavior_Mummy : EnemyBehavior
             float t = Mathf.Clamp01(elapsed / knockDuration);
             // ease-out using sine
             float easeOut = Mathf.Sin(t * (Mathf.PI * 0.5f));
-            transform.position = Vector3.Lerp(start, target, easeOut);
+            rootTransform.position = Vector3.Lerp(start, target, easeOut);
             yield return null;
         }
 
-        transform.position = target;
+        rootTransform.position = target;
 
         OnDeath();
     }
@@ -138,6 +141,12 @@ public class EnemyBehavior_Mummy : EnemyBehavior
         }
 
         return endPos;
+    }
+
+    protected override void OnAttack()
+    {
+        animator.Rebind();
+        animator.SetTrigger("Attack");
     }
     protected override void AttackLand()
     {
