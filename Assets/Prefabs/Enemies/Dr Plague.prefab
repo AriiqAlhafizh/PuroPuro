@@ -687,7 +687,7 @@ GameObject:
   - component: {fileID: 8921442118748462820}
   - component: {fileID: 2703794000428391195}
   m_Layer: 0
-  m_Name: MustLook
+  m_Name: Dr Plague
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -720,7 +720,7 @@ Animator:
   m_GameObject: {fileID: 2766520990056341028}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: cb57f7c83ae84d046a752b96f7843b2a, type: 3}
-  m_Controller: {fileID: 22100000, guid: 196b759d59483684bbde77cc96efcfe1, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -747,7 +747,7 @@ MonoBehaviour:
   enemyStats: {fileID: 11400000, guid: 44871082f013e574c931c162ab49e2b9, type: 2}
   offset: 5
   spawnController: {fileID: 22100000, guid: 14a24388f7e985f4688e5e8f06f5f30a, type: 2}
-  idleController: {fileID: 9100000, guid: d0635c5725ebf5c49ba6eee6b99dadb6, type: 2}
+  idleController: {fileID: 9100000, guid: 6fbab41f957b5724bb904cd1a7a9336a, type: 2}
   deathController: {fileID: 22100000, guid: 196b759d59483684bbde77cc96efcfe1, type: 2}
 --- !u!1 &2787789027213459379
 GameObject:

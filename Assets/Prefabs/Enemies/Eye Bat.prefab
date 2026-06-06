@@ -330,7 +330,7 @@ GameObject:
   - component: {fileID: 95766226996078928}
   - component: {fileID: 7078996632873473974}
   m_Layer: 0
-  m_Name: DontLook
+  m_Name: Eye Bat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
