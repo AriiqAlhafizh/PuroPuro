@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 191586408092562156}
   - component: {fileID: 4646951880568059591}
+  - component: {fileID: 2197321150232741456}
   m_Layer: 0
   m_Name: Body
   m_TagString: Enemy
@@ -55,6 +56,19 @@ CapsuleCollider:
   m_Height: 0.8
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2197321150232741456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6031642846047534970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2453a70c6d7d3a47a1d881b63734634, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HitboxType
+  hitbox: 0
 --- !u!1 &8256612747274493544
 GameObject:
   m_ObjectHideFlags: 0
@@ -97,6 +111,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4799260729103215385}
   - component: {fileID: 2436514587836597893}
+  - component: {fileID: 5430643811977268056}
   m_Layer: 0
   m_Name: Head
   m_TagString: Enemy
@@ -142,6 +157,19 @@ CapsuleCollider:
   m_Height: 0.21
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5430643811977268056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9185099481084519158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2453a70c6d7d3a47a1d881b63734634, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HitboxType
+  hitbox: 1
 --- !u!1001 &6715182970597701168
 PrefabInstance:
   m_ObjectHideFlags: 0

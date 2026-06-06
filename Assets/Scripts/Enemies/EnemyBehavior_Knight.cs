@@ -19,7 +19,7 @@ public class EnemyBehavior_Knight : EnemyBehavior_Normal
         else
         {
             StopAllCoroutines();
-            OnDeath();
+            StartCoroutine(DeathSaquence());
         }
     }
 }

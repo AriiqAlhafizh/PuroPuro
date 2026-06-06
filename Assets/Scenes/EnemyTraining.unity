@@ -751,6 +751,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dr Plague
       objectReference: {fileID: 0}
+    - target: {fileID: 2766520990056341028, guid: ec74b107f19235147a6845a1bf579383, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3255953556716913822, guid: ec74b107f19235147a6845a1bf579383, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.09384151
@@ -977,14 +981,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1319645336948802290, guid: 218fb48cd1933714cb418026e4ef39bd, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1348699797781561097, guid: 218fb48cd1933714cb418026e4ef39bd, type: 3}
-      propertyPath: offset
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2482289476334985402, guid: 218fb48cd1933714cb418026e4ef39bd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.03
