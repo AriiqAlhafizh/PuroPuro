@@ -11,7 +11,7 @@ public class HUD : MonoBehaviour
 
     void Update()
     {
-        bulletText.text = playerStats.currentBullets.ToString();
+        bulletText.text = $"{playerStats.currentBullets}/{playerStats.maxBullets}";
         HealthText.text = playerStats.health.ToString();
     }
 }
