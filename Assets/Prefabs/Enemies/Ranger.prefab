@@ -2720,12 +2720,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyBehavior_Ranger
   enemyStats: {fileID: 11400000, guid: effa89ef1db587e48b3d6d1bd8ebfe11, type: 2}
-  offset: 0.5
+  offset: 0
   spawnController: {fileID: 22100000, guid: 14a24388f7e985f4688e5e8f06f5f30a, type: 2}
   walkController: {fileID: 22100000, guid: 6cc4de54c1239c840ab98ec9f091249a, type: 2}
   attackController: {fileID: 22100000, guid: b3592b4b08b9b804d846382c174ad5c1, type: 2}
   idleController: {fileID: 9100000, guid: d0635c5725ebf5c49ba6eee6b99dadb6, type: 2}
   deathController: {fileID: 22100000, guid: d86f425e09bd3ff4fa0e23cbd09347a6, type: 2}
+  bulletPrefab: {fileID: 5275652781249614370, guid: 6f2547699d44574449ab003cdaab04c2, type: 3}
+  firePoint: {fileID: 4505530101367083729}
 --- !u!95 &1319645336948802290
 Animator:
   serializedVersion: 7
@@ -2736,7 +2738,7 @@ Animator:
   m_GameObject: {fileID: 2970420324578064896}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: e294eebfc7d387146a0ca4214b75375d, type: 3}
-  m_Controller: {fileID: 22100000, guid: d86f425e09bd3ff4fa0e23cbd09347a6, type: 2}
+  m_Controller: {fileID: 22100000, guid: b3592b4b08b9b804d846382c174ad5c1, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -4285,6 +4287,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5757213454021903437}
+  - {fileID: 4505530101367083729}
   m_Father: {fileID: 7620088309288321883}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4628375571038253291
@@ -5811,6 +5814,37 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.40630898, y: 0.79814786, z: -1.8786407}
     m_Extent: {x: 0.15789089, y: 0.16178578, z: 0.12552756}
   m_DirtyAABB: 0
+--- !u!1 &6131438827864372210
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4505530101367083729}
+  m_Layer: 0
+  m_Name: ShootingPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4505530101367083729
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6131438827864372210}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.74, y: -0, z: -0.35}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6589346511318819024}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6269302630979735639
 GameObject:
   m_ObjectHideFlags: 0
