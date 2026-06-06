@@ -3,6 +3,10 @@ using UnityEngine;
 
 public class EnemyBehavior_Ranger : EnemyBehavior_Normal
 {
+    [Header("Bullet Settings")]
+    [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private Transform firePoint;
+
     protected override IEnumerator WalkPhase()
     {
         offset = Vector3.Distance(transform.position, endPos) / 2f;
@@ -36,15 +40,11 @@ public class EnemyBehavior_Ranger : EnemyBehavior_Normal
 
     protected override void AttackLand()
     {
-        int rand = Random.Range(0, 100);
-        if (rand < 50) 
+        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        Ranger_Bullet bulletScript = bullet.GetComponent<Ranger_Bullet>();
+        if (bulletScript != null)
         {
-            Debug.Log("Ranger attack hit the player!");
-            PlayerStatsManager.instance.TakeDamage();
-        }
-        else 
-        {
-            Debug.Log("Ranger attack missed the player!");
+            bulletScript.Initialize(dir, endPos);
         }
     }
 }
