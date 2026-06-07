@@ -3,6 +3,7 @@ using UnityEngine.InputSystem;
 using System.Collections;
 using System.Collections.Generic;
 
+public enum Lane { Up, Right, Down, Left }
 public class PlayerMovement : MonoBehaviour
 {
     [Header("References")]
@@ -54,7 +55,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public void SpinCamera(Direction targetDirection)
+    public void SpinCamera(Lane targetLane)
     {
         if (!isSpinning)
         {
@@ -99,7 +100,8 @@ public class PlayerMovement : MonoBehaviour
         }
 
         mainCamera.transform.rotation = endCamRot;
-        currentDirection = targetDirection;
+        currentLane = targetLane;
+        PlayerStatsManager.instance.ChangeLane(currentLane);
         isSpinning = false;
     }
 }

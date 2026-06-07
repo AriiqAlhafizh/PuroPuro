@@ -1,9 +1,12 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerStatsManager : MonoBehaviour
 {
     public static PlayerStatsManager instance;
+
+    public event Action<Lane> OnLaneChange;
 
     private void Awake()
     {
@@ -28,6 +31,11 @@ public class PlayerStatsManager : MonoBehaviour
     public bool isInForcedPOV = false;
     public bool isBinded = false;
     public bool isParalyzed = false;
+
+    public void ChangeLane(Lane newLane)
+    {
+        OnLaneChange?.Invoke(newLane);
+    }
 
     public void TakeDamage()
     {
