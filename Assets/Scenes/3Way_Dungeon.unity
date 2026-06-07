@@ -502,6 +502,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6603488554207994483, guid: 98f5378049f9b5745a77677f581b32b1, type: 3}
   m_PrefabInstance: {fileID: 80583274}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &137271245 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5660599237984102367, guid: f99fc0a05ca198c4684e1ab143ce3bea, type: 3}
+  m_PrefabInstance: {fileID: 1778387825}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &170641120
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3546,11 +3551,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9051238300485817969, guid: 2f6c4572e07a60b43b00e1c4f489a806, type: 3}
   m_PrefabInstance: {fileID: 1078674894}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1102932270 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1457139613845482819, guid: f99fc0a05ca198c4684e1ab143ce3bea, type: 3}
-  m_PrefabInstance: {fileID: 1778387825}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1133797258
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5970,10 +5970,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2076922738904949602, guid: f99fc0a05ca198c4684e1ab143ce3bea, type: 3}
+      propertyPath: playerAmmo
+      value: 
+      objectReference: {fileID: 4890105438541727917}
     - target: {fileID: 2896519484545565997, guid: f99fc0a05ca198c4684e1ab143ce3bea, type: 3}
       propertyPath: m_Name
       value: HUD
       objectReference: {fileID: 0}
+    - target: {fileID: 3535465312799345191, guid: f99fc0a05ca198c4684e1ab143ce3bea, type: 3}
+      propertyPath: playerHealth
+      value: 
+      objectReference: {fileID: 4890105438541727917}
     - target: {fileID: 6879800695391252455, guid: f99fc0a05ca198c4684e1ab143ce3bea, type: 3}
       propertyPath: playerStats
       value: 
@@ -7492,7 +7500,7 @@ PrefabInstance:
     - target: {fileID: 7885212715738742998, guid: b6c15a53655cd5040b2d233c36c0eeee, type: 3}
       propertyPath: gyroCursorPrefab
       value: 
-      objectReference: {fileID: 1102932270}
+      objectReference: {fileID: 137271245}
     - target: {fileID: 8778868664977178679, guid: b6c15a53655cd5040b2d233c36c0eeee, type: 3}
       propertyPath: m_LocalPosition.x
       value: 48.35002

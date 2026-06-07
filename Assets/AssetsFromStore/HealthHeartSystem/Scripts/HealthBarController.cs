@@ -17,7 +17,7 @@ public class HealthBarController : MonoBehaviour
     private void Start()
     {
         // Should I use lists? Maybe :)
-        heartContainers = new GameObject[(int)PlayerStats.Instance.MaxTotalHealth];
+        heartContainers = new GameObject[(int)PlayerStatsManager.instance.health];
         heartFills = new Image[(int)PlayerStats.Instance.MaxTotalHealth];
 
         PlayerStats.Instance.onHealthChangedCallback += UpdateHeartsHUD;
