@@ -85,7 +85,7 @@ public class Gun : MonoBehaviour
             UDPManager.SendPlayerData(PlayerStatsManager.instance.currentBullets, PlayerStatsManager.instance.health);
 
             // Debug
-            Debug.Log("Bullets left: " + PlayerStatsManager.instance.currentBullets);
+            //Debug.Log("Bullets left: " + PlayerStatsManager.instance.currentBullets);
         }
     }
     public void Reload(InputAction.CallbackContext context)
@@ -102,6 +102,7 @@ public class Gun : MonoBehaviour
 
     IEnumerator ReloadCoroutine()
     {
+        CursorManager.instance.ReloadCursor(reloadDuration);
         gunAudio.PlayReloadAudio();
         PlayerStatsManager.instance.isReloading = true;
         yield return new WaitForSeconds(reloadDuration);

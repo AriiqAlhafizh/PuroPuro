@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 using System.Collections;
 using System.Collections.Generic;
 
-public enum Lane { Up, Right, Down, Left }
+
 public class PlayerMovement : MonoBehaviour
 {
     [Header("References")]
@@ -14,17 +14,17 @@ public class PlayerMovement : MonoBehaviour
     public AnimationCurve spinCurve;
 
     public int currentLevel = 0;
-    public Direction currentDirection = Direction.Up;
+    public Lane currentLane = Lane.Up;
 
-    public List<Direction> allowedDirections = new List<Direction>();
-    public Dictionary<Direction, float> directionAngles = new Dictionary<Direction, float>();
+    public List<Lane> allowedDirections = new List<Lane>();
+    public Dictionary<Lane, float> directionAngles = new Dictionary<Lane, float>();
 
     public bool isSpinning = false;
 
     private void Start()
     {
         // Initialize allowed directions and their corresponding angles based on the current level
-        allowedDirections = LevelManager.instance.GetAllowedDirections(currentLevel);
+        allowedDirections = LevelManager.instance.GetAllowedLanes(currentLevel);
         directionAngles = LevelManager.instance.GetAllowedAngles(currentLevel);
     }
 
@@ -45,10 +45,10 @@ public class PlayerMovement : MonoBehaviour
             if (directionDelta != 0)
             {
                 // Update currentDirection with wrap-around
-                int newDir = (allowedDirections.IndexOf(currentDirection) + directionDelta) % allowedDirections.Count;
+                int newDir = (allowedDirections.IndexOf(currentLane) + directionDelta) % allowedDirections.Count;
                 if (newDir < 0) newDir += allowedDirections.Count;
-                Direction nextDirection = allowedDirections[newDir];
-                currentDirection = nextDirection;
+                Lane nextDirection = allowedDirections[newDir];
+                currentLane = nextDirection;
 
                 SpinCamera(nextDirection, directionDelta);
             }
@@ -59,18 +59,18 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!isSpinning)
         {
-            StartCoroutine(SpinCameraToDirection(targetDirection, 0));
+            StartCoroutine(SpinCameraToDirection(targetLane, 0));
         }
     }
 
-    public void SpinCamera(Direction targetDirection, int directionDelta)
+    public void SpinCamera(Lane targetLane, int directionDelta)
     {
         if (!isSpinning)
         {
-            StartCoroutine(SpinCameraToDirection(targetDirection, directionDelta));
+            StartCoroutine(SpinCameraToDirection(targetLane, directionDelta));
         }
     }
-    private IEnumerator SpinCameraToDirection(Direction targetDirection, int directionDelta)
+    private IEnumerator SpinCameraToDirection(Lane targetLane, int directionDelta)
     {
         isSpinning = true;
 
@@ -79,7 +79,7 @@ public class PlayerMovement : MonoBehaviour
 
         // Get the camera's current Y rotation as the start angle
         float startAngle = mainCamera.transform.eulerAngles.y + directionDelta;
-        float endAngle = directionAngles[targetDirection];
+        float endAngle = directionAngles[targetLane];
 
         // Handle shortest rotation direction
         float angleDelta = Mathf.DeltaAngle(startAngle, endAngle);

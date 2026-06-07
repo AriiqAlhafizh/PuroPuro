@@ -46,8 +46,8 @@ Camera:
   m_GameObject: {fileID: 6654382316451557107}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -222,7 +222,7 @@ PrefabInstance:
       objectReference: {fileID: 6654382316451557107}
     - target: {fileID: 2761128004812031931, guid: af4a15badd4bb6c4db2c4e0f683631ef, type: 3}
       propertyPath: currentLevel
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7278841218290764306, guid: af4a15badd4bb6c4db2c4e0f683631ef, type: 3}
       propertyPath: m_LocalPosition.x
@@ -305,8 +305,16 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8679463877084357143, guid: af4a15badd4bb6c4db2c4e0f683631ef, type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: AdvanceLevelDebug
+      objectReference: {fileID: 0}
+    - target: {fileID: 8679463877084357143, guid: af4a15badd4bb6c4db2c4e0f683631ef, type: 3}
       propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ChangeControlType
+      objectReference: {fileID: 0}
+    - target: {fileID: 8679463877084357143, guid: af4a15badd4bb6c4db2c4e0f683631ef, type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: LevelManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8679463877084357143, guid: af4a15badd4bb6c4db2c4e0f683631ef, type: 3}
       propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName

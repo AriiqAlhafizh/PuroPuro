@@ -1,7 +1,10 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
-public enum Direction { 
+public enum Lane { 
     Up, 
     Right, 
     Down,
@@ -23,63 +26,87 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    public List<List<Direction>> levelAllowedDirection = new()
+    public List<List<Lane>> levelAllowedDirection = new()
         {
         // Level 1: Only Up 
-        new List<Direction> { Direction.Up },
+        new List<Lane> { Lane.Up },
         // Level 2: Up, Down
-        new List<Direction> { Direction.Up, Direction.Down },
+        new List<Lane> { Lane.Up, Lane.Down },
         // Level 3: Up, Right, Left
-        new List<Direction> { Direction.Up, Direction.Right, Direction.Left },
+        new List<Lane> { Lane.Up, Lane.Right, Lane.Left },
         // Level 4: All directions
-        new List<Direction> { Direction.Up, Direction.Right, Direction.Down, Direction.Left }
+        new List<Lane> { Lane.Up, Lane.Right, Lane.Down, Lane.Left }
     };
 
-    public List<Dictionary<Direction, float>> levelDirectionAngles = new()
+    public List<Dictionary<Lane, float>> levelDirectionAngles = new()
     {
         // Level 1: Only Up 
-        {   new Dictionary<Direction, float>
+        {   new Dictionary<Lane, float>
             {
-                { Direction.Up, 0f }
+                { Lane.Up, 0f }
             }
         },
         // Level 2: Up, Down
-        {   new Dictionary<Direction, float>
+        {   new Dictionary<Lane, float>
             {
-                { Direction.Up, 0f },
-                { Direction.Down, 180f }
+                { Lane.Up, 0f },
+                { Lane.Down, 180f }
             }
         },
         // Level 3: Up, Left, Right
-        {   new Dictionary<Direction, float>
+        {   new Dictionary<Lane, float>
             {
-                { Direction.Up, 0f },
-                { Direction.Right, 90f },
-                { Direction.Left, -90f }
+                { Lane.Up, 0f },
+                { Lane.Right, 90f },
+                { Lane.Left, -90f }
             }
         },
         // Level 4: All directions
-        {   new Dictionary<Direction, float>
+        {   new Dictionary<Lane, float>
             {
-                { Direction.Up, 0f },
-                { Direction.Right, 90f },
-                { Direction.Down, 180f },
-                { Direction.Left, -90f }
+                { Lane.Up, 0f },
+                { Lane.Right, 90f },
+                { Lane.Down, 180f },
+                { Lane.Left, -90f }
             }
         }
     };
     
-    public List<Direction> GetAllowedDirections(int level)
+    public List<Lane> GetAllowedLanes(int level)
     {
         return levelAllowedDirection.Count >= level
             ? levelAllowedDirection[level - 1]
-            : new List<Direction>();
+            : new List<Lane>();
     }
-    public Dictionary<Direction, float> GetAllowedAngles(int level)
+    public Dictionary<Lane, float> GetAllowedAngles(int level)
     {
         return levelDirectionAngles.Count >= level
             ? levelDirectionAngles[level - 1]
-            : new Dictionary<Direction, float>();
+            : new Dictionary<Lane, float>();
+    }
+
+    [Header("Level Settings")]
+    public int currentLevel = 1;
+
+
+    public void AdvanceLevelDebug(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+            StartCoroutine(AdvanceLevel());
+    }
+    public IEnumerator AdvanceLevel()
+    {
+        currentLevel++;
+        yield return StartCoroutine(LevelCompleteCutscene());
+        SceneManager.LoadScene(currentLevel);
+        yield return new WaitForSeconds(1f); // Wait for the scene to load
+        ScreenFader.Instance.FadeToClear(1f);
+    }
+
+    private IEnumerator LevelCompleteCutscene()
+    {
+        ScreenFader.Instance.FadeToBlack(1f);
+        yield return new WaitForSeconds(1f);
     }
 }
 
