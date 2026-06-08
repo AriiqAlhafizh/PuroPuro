@@ -389,7 +389,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyBehavior_DontLook
   enemyStats: {fileID: 11400000, guid: 44871082f013e574c931c162ab49e2b9, type: 2}
   offset: 4
-  heightOffset: 1.5
+  heightOffset: 0.5
+  lookScaleMultiplier: 2
+  lookScaleDuration: 1
+  lungeDistance: 5
+  lungeDuration: 0.2
 --- !u!1 &1452314376040498
 GameObject:
   m_ObjectHideFlags: 0

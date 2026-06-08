@@ -10,7 +10,7 @@ public class Ranger_Bullet : MonoBehaviour
     private void Update()
     {
         transform.position += dir * speed * Time.deltaTime;
-        if (Vector3.Distance(transform.position, endPos) < 0.1f)
+        if (Vector3.Distance(transform.position, endPos) < 0.5f)
         {
             int rand = Random.Range(0, 100);
             if (rand < 70)
