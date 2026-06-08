@@ -23566,6 +23566,10 @@ PrefabInstance:
       value: GameManager
       objectReference: {fileID: 0}
     - target: {fileID: 3374552943397332972, guid: b6c15a53655cd5040b2d233c36c0eeee, type: 3}
+      propertyPath: weightDecayFactor
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3374552943397332972, guid: b6c15a53655cd5040b2d233c36c0eeee, type: 3}
       propertyPath: 'SpawnPointsParent.Array.data[0]'
       value: 
       objectReference: {fileID: 1499599039}
@@ -23581,6 +23585,14 @@ PrefabInstance:
       propertyPath: 'SpawnPointsParent.Array.data[3]'
       value: 
       objectReference: {fileID: 772736921}
+    - target: {fileID: 3374552943397332972, guid: b6c15a53655cd5040b2d233c36c0eeee, type: 3}
+      propertyPath: tierConfigs.Array.data[2].baseCooldown
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3374552943397332972, guid: b6c15a53655cd5040b2d233c36c0eeee, type: 3}
+      propertyPath: tierConfigs.Array.data[3].baseCooldown
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 7885212715738742998, guid: b6c15a53655cd5040b2d233c36c0eeee, type: 3}
       propertyPath: gyroCursorPrefab
       value: 
