@@ -98,14 +98,12 @@ public class LevelManager : MonoBehaviour
     {
         currentLevel++;
         yield return StartCoroutine(LevelCompleteCutscene());
-        SceneManager.LoadScene(currentLevel);
-        yield return new WaitForSeconds(2f); // Wait for the scene to load
-        ScreenFader.Instance.FadeToClear(2f);
+        SceneTransitionManager.Instance.TransitionToScene(currentLevel);
+        
     }
 
     private IEnumerator LevelCompleteCutscene()
     {
-        ScreenFader.Instance.FadeToBlack(2f);
         yield return new WaitForSeconds(2f);
     }
 }

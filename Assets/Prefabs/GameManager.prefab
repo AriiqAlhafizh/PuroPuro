@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 7885212715738742998}
   - component: {fileID: 2218133187491548270}
   - component: {fileID: 1031439737835262022}
+  - component: {fileID: 3437850110267988823}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -52,9 +53,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpawnerManager
   SpawnPointsParent:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   - {fileID: 0}
   weightDecayFactor: 0.3
   tierConfigs:
@@ -173,6 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20b0b19cb319f464c99e7658743d3925, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelManager
+  currentLevel: 1
 --- !u!114 &1031439737835262022
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -195,4 +194,21 @@ MonoBehaviour:
   - {fileID: 2800000, guid: e44cb64a403b0834e964fc0b0e8b88fd, type: 3}
   - {fileID: 2800000, guid: 9563e02215a4c5e42ab4e2831f998d56, type: 3}
   - {fileID: 2800000, guid: 8f348426740de5f4f8a96d0e3ef84117, type: 3}
-  player: {fileID: 0}
+--- !u!114 &3437850110267988823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1683508898033892033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fe4d9753963496469000dc581726ac2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UDPReceiver
+  localPort: 4210
+  esp32Port: 4211
+  esp32IP: 192.168.1.15
+  yaw: 0
+  pitch: 0
+  triggerPressed: 0
