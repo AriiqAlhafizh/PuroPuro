@@ -34,7 +34,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "DEBUG_GetHit",
+                    "name": "DEBUG_Button",
                     "type": "Button",
                     "id": "89ad92fc-a8da-42db-ae93-5b614022c5cc",
                     "expectedControlType": "",
@@ -159,7 +159,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "DEBUG_GetHit",
+                    "action": "DEBUG_Button",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

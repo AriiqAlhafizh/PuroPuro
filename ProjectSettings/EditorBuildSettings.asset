@@ -8,6 +8,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 7a3fa4c8dbffed841a6300c45a0e810d
+  - enabled: 0
+    path: Assets/Scenes/SampleScene.unity
+    guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 0
+    path: Assets/Scenes/Test.unity
+    guid: 78c32f8c6d9a1c04a9fc955208cb09cf
   - enabled: 1
     path: Assets/Scenes/1Way_Dungeon.unity
     guid: 02d6c8ac0bdacab45a6d7ccac969e2f2
@@ -20,15 +26,5 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/4Way_Dungeon.unity
     guid: d9f4db04397fb5d4bace2961022b5a2c
-  - enabled: 1
-    path: Assets/Scenes/WinScene.unity
-    guid: 96c01dcd61d4e4d40a92d3008b28d8d2
-  - enabled: 1
-    path: Assets/Scenes/GameOver.unity
-    guid: cd2a5051243aa4a4791749bd35c8f940
-  - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
   m_configObjects:
-    com.unity.dt.app-ui: {fileID: 11400000, guid: 1b1c20d82303e4b5781c3ef50ac1449f, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
