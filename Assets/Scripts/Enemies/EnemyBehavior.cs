@@ -127,12 +127,19 @@ public class EnemyBehavior : MonoBehaviour
 
     public virtual void OnBeingHit() {
         StopAllCoroutines();
-        OnDeath();
+        StartCoroutine(DeathSaquence());
     }
     protected virtual void OnDeath() 
     {
         
     }
 
-    
+    protected virtual IEnumerator DeathSaquence()
+    {
+        OnDeath();
+        yield return new WaitForSeconds(0.5f);
+        Destroy(gameObject);
+    }
+
+
 }

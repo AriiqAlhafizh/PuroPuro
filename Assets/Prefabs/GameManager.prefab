@@ -68,12 +68,12 @@ MonoBehaviour:
     minMultiplier: 0.8
   - tier: 2
     displayName: Elite II
-    baseCooldown: 20
+    baseCooldown: 15
     enableAtDifficulty: 2
     minMultiplier: 0.85
   - tier: 3
     displayName: Elite III
-    baseCooldown: 30
+    baseCooldown: 20
     enableAtDifficulty: 3
     minMultiplier: 0.9
 --- !u!114 &364046914732619347
@@ -88,6 +88,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6447a5809df734f4a871fd4a4d0e263b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStatsManager
+  currentLane: 0
   health: 3
   maxBullets: 6
   currentBullets: 6
@@ -158,3 +159,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ControlManager
   isGyroEnabled: 0
+  gyroCursorPrefab: {fileID: 0}
