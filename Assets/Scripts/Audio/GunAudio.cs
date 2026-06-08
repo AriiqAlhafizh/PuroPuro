@@ -5,6 +5,7 @@ public class GunAudio : MonoBehaviour
 {
     public List<AudioClip> shootClips;
     public AudioClip reloadClip;
+    public AudioClip ricochetClip;
     public AudioSource audioSource;
 
     public void PlayShootAudio()
@@ -15,5 +16,10 @@ public class GunAudio : MonoBehaviour
     public void PlayReloadAudio()
     {
         audioSource.PlayOneShot(reloadClip);
+    }
+
+    public void PlayRicochetAudio()
+    {
+        audioSource.PlayOneShot(ricochetClip);
     }
 }

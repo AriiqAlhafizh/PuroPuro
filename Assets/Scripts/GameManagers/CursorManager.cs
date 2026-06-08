@@ -31,7 +31,9 @@ public class CursorManager : MonoBehaviour
         if (cursorSprites != null && cursorSprites.Length > 0)
         {
             int safeIndex = Mathf.Clamp(index, 0, cursorSprites.Length - 1);
-            Cursor.SetCursor(cursorSprites[safeIndex], Vector2.zero, CursorMode.Auto);
+            Texture2D tex = cursorSprites[safeIndex];
+            Vector2 hotspot = new Vector2(tex.width / 2f, tex.height / 2f);
+            Cursor.SetCursor(tex, hotspot, CursorMode.Auto);
         }
     }
 
