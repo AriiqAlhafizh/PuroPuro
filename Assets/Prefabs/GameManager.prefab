@@ -1,0 +1,214 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1683508898033892033
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8778868664977178679}
+  - component: {fileID: 3374552943397332972}
+  - component: {fileID: 364046914732619347}
+  - component: {fileID: 8248984738836939598}
+  - component: {fileID: 6109676319987998362}
+  - component: {fileID: 4135799069875261382}
+  - component: {fileID: 7885212715738742998}
+  - component: {fileID: 2218133187491548270}
+  - component: {fileID: 1031439737835262022}
+  - component: {fileID: 3437850110267988823}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8778868664977178679
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1683508898033892033}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 48.35002, y: 2.87386, z: -51.44311}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3374552943397332972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1683508898033892033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9323c9dd47ff72b40bc5cc3851404314, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpawnerManager
+  SpawnPointsParent:
+  - {fileID: 0}
+  weightDecayFactor: 0.3
+  tierConfigs:
+  - tier: 0
+    displayName: Normal
+    baseCooldown: 3
+    enableAtDifficulty: 0
+    minMultiplier: 0.6
+  - tier: 1
+    displayName: Elite I
+    baseCooldown: 10
+    enableAtDifficulty: 1
+    minMultiplier: 0.8
+  - tier: 2
+    displayName: Elite II
+    baseCooldown: 20
+    enableAtDifficulty: 2
+    minMultiplier: 0.85
+  - tier: 3
+    displayName: Elite III
+    baseCooldown: 30
+    enableAtDifficulty: 3
+    minMultiplier: 0.9
+--- !u!114 &364046914732619347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1683508898033892033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6447a5809df734f4a871fd4a4d0e263b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerStatsManager
+  health: 3
+  maxBullets: 6
+  currentBullets: 6
+  isReloading: 0
+  isInForcedPOV: 0
+  isBinded: 0
+  isParalyzed: 0
+--- !u!114 &8248984738836939598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1683508898033892033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a55a3498e538447468022f5585f20552, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TimerManager
+  useUnscaledTime: 1
+  secondsToNormal: 30
+  secondsToMedium: 90
+  secondsToHard: 180
+  autoDifficultyEnabled: 1
+  elapsedSeconds: 0
+--- !u!114 &6109676319987998362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1683508898033892033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea7776da661bdc04fbeb1e4e84a390af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ScoreManager
+  baseScore: 0
+  combo: 0
+  totalScore: 0
+  hitShot: 0
+  totalShot: 0
+  accuracy: 0
+--- !u!114 &4135799069875261382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1683508898033892033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cf92701ee7a74343823515a24388193, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioManager
+  SFXVolume: 0.5
+  BGMVolume: 0.1
+--- !u!114 &7885212715738742998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1683508898033892033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53a4e00c7ebeadd41b64cf2e708ed873, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ControlManager
+  isGyroEnabled: 0
+  gyroCursorPrefab: {fileID: 0}
+--- !u!114 &2218133187491548270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1683508898033892033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20b0b19cb319f464c99e7658743d3925, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LevelManager
+  currentLevel: 1
+--- !u!114 &1031439737835262022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1683508898033892033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0df6c5d0c802f6d43a9eb0347455bcc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CursorManager
+  cursorSprites:
+  - {fileID: 2800000, guid: 079a1b8ea9126ba4f8b05c7131c281e9, type: 3}
+  - {fileID: 2800000, guid: 1ceb732d68b865f45b611a1c5d321301, type: 3}
+  - {fileID: 2800000, guid: 50a53ec3eea08374d8a00ad9637dad01, type: 3}
+  - {fileID: 2800000, guid: 87aaa47ec62705a4aabf89716e74255b, type: 3}
+  - {fileID: 2800000, guid: c0d9572176704f3498aaf180d5f80715, type: 3}
+  - {fileID: 2800000, guid: 6771f39a6994a6b4d82a7faa59d9ff7d, type: 3}
+  - {fileID: 2800000, guid: e44cb64a403b0834e964fc0b0e8b88fd, type: 3}
+  - {fileID: 2800000, guid: 9563e02215a4c5e42ab4e2831f998d56, type: 3}
+  - {fileID: 2800000, guid: 8f348426740de5f4f8a96d0e3ef84117, type: 3}
+--- !u!114 &3437850110267988823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1683508898033892033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fe4d9753963496469000dc581726ac2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UDPReceiver
+  localPort: 4210
+  esp32Port: 4211
+  esp32IP: 192.168.1.15
+  yaw: 0
+  pitch: 0
+  triggerPressed: 0
