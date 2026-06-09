@@ -16,12 +16,11 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
-    [SerializeField] private int baseScore;
-    [SerializeField] public int combo;
-    [SerializeField] private int totalScore;
-    [SerializeField] private int hitShot = 0;
-    [SerializeField] private int totalShot = 0;
-    [SerializeField] private float accuracy;
+     public int baseScore;
+     public int totalScore;
+     public int hitShot = 0;
+     public int totalShot = 0;
+     public float accuracy;
 
 
     public void IncreaseScore(int newScore)
@@ -43,5 +42,5 @@ public class ScoreManager : MonoBehaviour
     public void CalculateTotalScore()
     {
 
-    }
+    } 
 }
