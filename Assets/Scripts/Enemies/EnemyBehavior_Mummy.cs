@@ -108,6 +108,7 @@ public class EnemyBehavior_Mummy : EnemyBehavior
 
     protected override void OnDeath()
     {
+        base.OnDeath();
         StopAllCoroutines();
         Destroy(gameObject);
     }
@@ -145,6 +146,7 @@ public class EnemyBehavior_Mummy : EnemyBehavior
 
     protected override void OnAttack()
     {
+        base.OnAttack();
         animator.Rebind();
         animator.SetTrigger("Attack");
     }
