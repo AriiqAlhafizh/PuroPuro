@@ -30,6 +30,8 @@ public class PlayerStatsManager : MonoBehaviour
     public int currentBullets = 6;
     public bool isReloading = false;
     public bool inIFrame = false;
+    public Lane currentLane = Lane.Up;
+    public bool isPaused = false;
 
     [Header("Debuffs")]
     public bool isInForcedPOV = false;

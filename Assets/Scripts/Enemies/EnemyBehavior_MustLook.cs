@@ -27,7 +27,7 @@ public class EnemyBehavior_MustLook : EnemyBehavior
 
         transform.position = GetWalkDirection();
 
-        PlayerStatsManager.instance.ApplyParalyze();
+        PlayerStatsManager.instance.cantReloadnShoot = true;
         PlayerStatsManager.instance.OnLaneChange += OnPlayerLaneChange;
 
         StartCoroutine(SpawnPhase());
@@ -68,28 +68,30 @@ public class EnemyBehavior_MustLook : EnemyBehavior
 
         if (Mathf.Abs(delta.x) > Mathf.Abs(delta.z))
         {
-            if (delta.x > 0)
+            if (delta.x > 0 || delta.x < 0 && PlayerStatsManager.instance.currentLane == Lane.Right)
             {
                 offset = -offset;
                 currentLane = Lane.Left;
             }
-            else
+            else if (delta.x < 0 || delta.x > 0 && PlayerStatsManager.instance.currentLane == Lane.Left)
             {
                 currentLane = Lane.Right;
             }
+          
             endPos = new Vector3(targetPos.x + offset, transform.position.y, transform.position.z);
         }
         else
         {
-            if (delta.z > 0)
+            if (delta.z > 0 || delta.z < 0 && PlayerStatsManager.instance.currentLane == Lane.Up)
             {
                 offset = -offset;
                 currentLane = Lane.Down;
             }
-            else
+            else if (delta.z < 0 || delta.z > 0 && PlayerStatsManager.instance.currentLane == Lane.Down)
             {
                 currentLane = Lane.Up;
             }
+
             endPos = new Vector3(transform.position.x, transform.position.y, targetPos.z + offset);
         }
 
@@ -105,7 +107,7 @@ public class EnemyBehavior_MustLook : EnemyBehavior
     {
         if (currentLane == lane)
         {
-            PlayerStatsManager.instance.RemoveParalyze();
+            PlayerStatsManager.instance.cantReloadnShoot = false;
             StartCoroutine(DeathPhase());
             StopAllCoroutines();
             Destroy(gameObject);
@@ -131,7 +133,6 @@ public class EnemyBehavior_MustLook : EnemyBehavior
 
     protected override void OnDeath()
     {
-        animator.Rebind();
         ApplyController(deathController);
     }
 

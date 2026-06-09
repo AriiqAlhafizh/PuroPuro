@@ -22,17 +22,10 @@ public class AudioManager : MonoBehaviour
     public float SFXVolume = 0.5f;
     public float BGMVolume = 0.1f;
 
-    public Slider SFXslider;
-
-    private void Start()
-    {
-        SFXslider.value = SFXVolume;
-    }
-
     public event Action<float> OnSFXVolumeChange;
     public void SetSFXVolume(float volume)
     {
-        SFXVolume = volume;
+        SFXVolume = volume * 0.5f;
         OnSFXVolumeChange?.Invoke(SFXVolume);
     }
 

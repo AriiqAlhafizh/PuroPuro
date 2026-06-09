@@ -32,8 +32,8 @@ public class LevelManager : MonoBehaviour
         new List<Lane> { Lane.Up },
         // Level 2: Up, Down
         new List<Lane> { Lane.Up, Lane.Down },
-        // Level 3: Up, Right, Left
-        new List<Lane> { Lane.Up, Lane.Right, Lane.Left },
+        // Level 3: Up, Down, Left
+        new List<Lane> { Lane.Up, Lane.Down, Lane.Left },
         // Level 4: All directions
         new List<Lane> { Lane.Up, Lane.Right, Lane.Down, Lane.Left }
     };
@@ -53,11 +53,11 @@ public class LevelManager : MonoBehaviour
                 { Lane.Down, 180f }
             }
         },
-        // Level 3: Up, Left, Right
+        // Level 3: Up, Down, Left
         {   new Dictionary<Lane, float>
             {
                 { Lane.Up, 0f },
-                { Lane.Right, 90f },
+                { Lane.Down, -180f },
                 { Lane.Left, -90f }
             }
         },
@@ -74,7 +74,7 @@ public class LevelManager : MonoBehaviour
 
     public List<float> levelTimes = new()
     {
-        30f,   
+        45f,   
         60f,   
         90f,   
         180f   
