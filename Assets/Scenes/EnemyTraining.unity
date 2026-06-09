@@ -127,6 +127,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6862144689248146103, guid: 2f3a46519470b7148a5bb80c1ca8211f, type: 3}
+      propertyPath: heightOffset
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7556849143885578464, guid: 2f3a46519470b7148a5bb80c1ca8211f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.604549
@@ -197,6 +201,18 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4107771985693238, guid: 2634306c4a5de244a9539aa4a906c4ea, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 4107771985693238, guid: 2634306c4a5de244a9539aa4a906c4ea, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 4107771985693238, guid: 2634306c4a5de244a9539aa4a906c4ea, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 4107771985693238, guid: 2634306c4a5de244a9539aa4a906c4ea, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.29
       objectReference: {fileID: 0}
@@ -235,6 +251,10 @@ PrefabInstance:
     - target: {fileID: 4107771985693238, guid: 2634306c4a5de244a9539aa4a906c4ea, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4107771985693238, guid: 2634306c4a5de244a9539aa4a906c4ea, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -595,6 +615,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6447a5809df734f4a871fd4a4d0e263b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStatsManager
+  currentLane: 0
   health: 3
   maxBullets: 6
   currentBullets: 6

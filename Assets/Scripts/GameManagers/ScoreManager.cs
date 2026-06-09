@@ -31,12 +31,10 @@ public class ScoreManager : MonoBehaviour
     public void IncreaseHitShot()
     {
         hitShot++;
-        CalculateAccuracy();
     }
     public void IncreaseTotalShot()
     {
         totalShot++;
-        CalculateAccuracy();
     }
     public void CalculateAccuracy()
     {
