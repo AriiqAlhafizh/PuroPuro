@@ -27,7 +27,7 @@ public class PlayerStatsManager : MonoBehaviour
     public int maxBullets = 6;
     public int currentBullets = 6;
     public bool isReloading = false;
-    private bool inIFrame = false;
+    public bool inIFrame = false;
 
     [Header("Debuffs")]
     public bool isInForcedPOV = false;
