@@ -41,9 +41,9 @@ public class SceneTransitionManager : MonoBehaviour
         StartCoroutine(FadeOutAndLoad(sceneName));
     }
 
-    public void TransitionToScene(int sceneNumber)
+    public IEnumerator TransitionToScene(int sceneNumber)
     {
-        StartCoroutine(FadeOutAndLoad(sceneNumber));
+        yield return FadeOutAndLoad(sceneNumber);
     }
 
     private IEnumerator FadeIn()

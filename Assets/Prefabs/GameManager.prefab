@@ -93,8 +93,9 @@ MonoBehaviour:
   currentBullets: 6
   isReloading: 0
   isInForcedPOV: 0
-  isBinded: 0
-  isParalyzed: 0
+  cantReload: 0
+  cantReloadnShoot: 0
+  bindDuration: 2
 --- !u!114 &8248984738836939598
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -109,8 +110,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimerManager
   useUnscaledTime: 1
   secondsToNormal: 30
-  secondsToMedium: 90
-  secondsToHard: 180
+  secondsToMedium: 60
+  secondsToHard: 90
   autoDifficultyEnabled: 1
   elapsedSeconds: 0
 --- !u!114 &6109676319987998362
@@ -145,6 +146,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AudioManager
   SFXVolume: 0.5
   BGMVolume: 0.1
+  SFXslider: {fileID: 0}
 --- !u!114 &7885212715738742998
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,6 +173,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20b0b19cb319f464c99e7658743d3925, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelManager
+  levelTimes:
+  - 30
+  - 60
+  - 90
+  - 180
   currentLevel: 1
 --- !u!114 &1031439737835262022
 MonoBehaviour:

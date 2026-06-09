@@ -27,7 +27,7 @@ public class EnemyBehavior_MustLook : EnemyBehavior
 
         transform.position = GetWalkDirection();
 
-        PlayerStatsManager.instance.isParalyzed = true;
+        PlayerStatsManager.instance.ApplyParalyze();
         PlayerStatsManager.instance.OnLaneChange += OnPlayerLaneChange;
 
         StartCoroutine(SpawnPhase());
@@ -105,7 +105,7 @@ public class EnemyBehavior_MustLook : EnemyBehavior
     {
         if (currentLane == lane)
         {
-            PlayerStatsManager.instance.isParalyzed = false;
+            PlayerStatsManager.instance.RemoveParalyze();
             StartCoroutine(DeathPhase());
             StopAllCoroutines();
             Destroy(gameObject);

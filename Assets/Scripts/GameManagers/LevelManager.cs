@@ -71,7 +71,21 @@ public class LevelManager : MonoBehaviour
             }
         }
     };
-    
+
+    public List<float> levelTimes = new()
+    {
+        30f,   
+        60f,   
+        90f,   
+        180f   
+    };
+    public float GetLevelTime(int level)
+    {
+        return levelTimes.Count >= level
+            ? levelTimes[level - 1]
+            : 60f; // default time if level exceeds defined times
+    }
+
     public List<Lane> GetAllowedLanes(int level)
     {
         return levelAllowedDirection.Count >= level
@@ -88,23 +102,19 @@ public class LevelManager : MonoBehaviour
     [Header("Level Settings")]
     public int currentLevel = 1;
 
-
-    public void AdvanceLevelDebug(InputAction.CallbackContext context)
+    public void AdvanceLevel()
     {
-        if (context.performed)
-            StartCoroutine(AdvanceLevel());
+        StartCoroutine(AdvanceLevelCoroutine());
     }
-    public IEnumerator AdvanceLevel()
+
+    public IEnumerator AdvanceLevelCoroutine()
     {
         currentLevel++;
-        yield return StartCoroutine(LevelCompleteCutscene());
-        SceneTransitionManager.Instance.TransitionToScene(currentLevel);
-        
-    }
-
-    private IEnumerator LevelCompleteCutscene()
-    {
-        yield return new WaitForSeconds(2f);
+        PlayerStatsManager.instance.StartIFrame();
+        SpawnerManager.Instance.spawningEnabled = false;
+        TimerManager.instance.ResetTimer();
+        yield return SceneTransitionManager.Instance.TransitionToScene(currentLevel);
+        PlayerStatsManager.instance.EndIFrame();
     }
 }
 

@@ -13,10 +13,6 @@ public class Gun : MonoBehaviour
     [Header("Settings")]
     public float reloadDuration = .5f;
 
-    [Header("Debuffs")]
-    public float bindDuration = 2f;
-    public float paralyzeDuration = 2f;
-
     private void Start()
     {
         PlayerStatsManager.instance.currentBullets = PlayerStatsManager.instance.maxBullets;
@@ -45,7 +41,7 @@ public class Gun : MonoBehaviour
     {
         if (PlayerStatsManager.instance.currentBullets > 0
             && !PlayerStatsManager.instance.isReloading
-            && !PlayerStatsManager.instance.isParalyzed)
+            && !PlayerStatsManager.instance.cantReloadnShoot)
         {
             Ray ray = ControlManager.instance.isGyroEnabled
             ? Camera.main.ScreenPointToRay(gyroCursor.crosshair.position)
@@ -129,8 +125,8 @@ public class Gun : MonoBehaviour
     {
         if (context.performed 
             && !PlayerStatsManager.instance.isReloading
-            && !PlayerStatsManager.instance.isBinded 
-            && !PlayerStatsManager.instance.isParalyzed
+            && !PlayerStatsManager.instance.cantReload 
+            && !PlayerStatsManager.instance.cantReloadnShoot
             && PlayerStatsManager.instance.currentBullets < PlayerStatsManager.instance.maxBullets - 1)
         {
             StartCoroutine(ReloadCoroutine());
@@ -147,19 +143,5 @@ public class Gun : MonoBehaviour
         PlayerStatsManager.instance.isReloading = false;
         UDPManager.SendPlayerData(PlayerStatsManager.instance.currentBullets, PlayerStatsManager.instance.health);
         Debug.Log("Reloaded! Bullets: " + PlayerStatsManager.instance.currentBullets);
-    }
-
-    IEnumerator BindCoroutine()
-    {
-        PlayerStatsManager.instance.isBinded = true;
-        yield return new WaitForSeconds(bindDuration);
-        PlayerStatsManager.instance.isBinded = false;
-    }
-
-    IEnumerator ParalyzeCoroutine()
-    {
-        PlayerStatsManager.instance.isParalyzed = true;
-        yield return new WaitForSeconds(paralyzeDuration);
-        PlayerStatsManager.instance.isParalyzed = false;
     }
 }

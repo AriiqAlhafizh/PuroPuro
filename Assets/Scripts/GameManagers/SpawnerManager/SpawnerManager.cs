@@ -38,6 +38,9 @@ public class SpawnerManager : MonoBehaviour
     private float[] timeSinceLastSpawn;
     private bool[] tierEnabled;
 
+    // boolean for external control of spawning (e.g. for pausing or special events)
+    public bool spawningEnabled = true;
+
     private List<float> spawnWeights;
 
     public static SpawnerManager Instance { get; private set; }
@@ -112,6 +115,9 @@ public class SpawnerManager : MonoBehaviour
     {
         while (true)
         {
+            while (!spawningEnabled)
+                yield return null;
+
             float dt = Time.deltaTime;
             for (int i = 0; i < timeSinceLastSpawn.Length; i++) timeSinceLastSpawn[i] += dt;
 

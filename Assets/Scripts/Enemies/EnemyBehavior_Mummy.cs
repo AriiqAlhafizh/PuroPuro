@@ -150,6 +150,6 @@ public class EnemyBehavior_Mummy : EnemyBehavior
     }
     protected override void AttackLand()
     {
-        PlayerStatsManager.instance.isBinded = true;
+        PlayerStatsManager.instance.ApplyBind();
     }
 }
