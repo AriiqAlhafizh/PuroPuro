@@ -222,19 +222,19 @@ PrefabInstance:
       objectReference: {fileID: 6654382316451557107}
     - target: {fileID: 2761128004812031931, guid: af4a15badd4bb6c4db2c4e0f683631ef, type: 3}
       propertyPath: currentLevel
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7278841218290764306, guid: af4a15badd4bb6c4db2c4e0f683631ef, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.7678
+      value: -0.017
       objectReference: {fileID: 0}
     - target: {fileID: 7278841218290764306, guid: af4a15badd4bb6c4db2c4e0f683631ef, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.7
+      value: -0.057
       objectReference: {fileID: 0}
     - target: {fileID: 7278841218290764306, guid: af4a15badd4bb6c4db2c4e0f683631ef, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.20703
+      value: 0.089
       objectReference: {fileID: 0}
     - target: {fileID: 7278841218290764306, guid: af4a15badd4bb6c4db2c4e0f683631ef, type: 3}
       propertyPath: m_LocalRotation.w
@@ -265,17 +265,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7661680642803951473, guid: af4a15badd4bb6c4db2c4e0f683631ef, type: 3}
-      propertyPath: UDPManager
-      value: 
-      objectReference: {fileID: 2683356076117566556}
-    - target: {fileID: 7661680642803951473, guid: af4a15badd4bb6c4db2c4e0f683631ef, type: 3}
       propertyPath: gyroCursor
       value: 
       objectReference: {fileID: 3230121053733389787}
-    - target: {fileID: 7661680642803951473, guid: af4a15badd4bb6c4db2c4e0f683631ef, type: 3}
-      propertyPath: UDPReceiver
-      value: 
-      objectReference: {fileID: 2683356076117566556}
     - target: {fileID: 7661680642803951473, guid: af4a15badd4bb6c4db2c4e0f683631ef, type: 3}
       propertyPath: isGyroEnabled
       value: 1
@@ -284,6 +276,10 @@ PrefabInstance:
       propertyPath: reloadDuration
       value: 0.8
       objectReference: {fileID: 0}
+    - target: {fileID: 7661680642803951473, guid: af4a15badd4bb6c4db2c4e0f683631ef, type: 3}
+      propertyPath: hitEffectPrefab
+      value: 
+      objectReference: {fileID: 995018041505653095, guid: 91e037aea3d399a43babe725b31bae85, type: 3}
     - target: {fileID: 8679463877084357143, guid: af4a15badd4bb6c4db2c4e0f683631ef, type: 3}
       propertyPath: m_ActionEvents.Array.size
       value: 5
@@ -329,8 +325,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 619463515056065862, guid: af4a15badd4bb6c4db2c4e0f683631ef, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2683356076117566556}
+      insertIndex: 3
+      addedObject: {fileID: 5529573810635077210}
     - targetCorrespondingSourceObject: {fileID: 619463515056065862, guid: af4a15badd4bb6c4db2c4e0f683631ef, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3230121053733389787}
@@ -345,7 +341,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 619463515056065862, guid: af4a15badd4bb6c4db2c4e0f683631ef, type: 3}
   m_PrefabInstance: {fileID: 8179899736093758751}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2683356076117566556
+--- !u!114 &5529573810635077210
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -354,15 +350,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 8726869627597314137}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0fe4d9753963496469000dc581726ac2, type: 3}
+  m_Script: {fileID: 11500000, guid: 7ea86a449a5d47a46a46d494cd1afbaf, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UDPReceiver
-  localPort: 4210
-  esp32Port: 4211
-  esp32IP: 192.168.1.15
-  yaw: 0
-  pitch: 0
-  triggerPressed: 0
+  m_EditorClassIdentifier: Assembly-CSharp::GunAudio
+  shootClips: []
+  reloadClip: {fileID: 0}
+  ricochetClip: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!114 &3230121053733389787
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -375,7 +369,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e4e5c3122dd7de4793a007579f11e42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GyroCursor
-  udp: {fileID: 2683356076117566556}
+  udp: {fileID: 0}
   crosshair: {fileID: 0}
   yawRange: 40
   pitchRange: 25
