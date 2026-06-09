@@ -67,10 +67,15 @@ public class EnemyBehavior_Normal : EnemyBehavior
     protected override void OnWalkStart() { ApplyController(walkController); }
 
     protected override void OnWalkEnd() { }
-    protected override void OnIdleEnter() { ApplyController(idleController); }
+    protected override void OnIdleEnter() 
+    { 
+        base.OnIdleEnter();
+        ApplyController(idleController);
+    }
 
     protected override void OnAttack()
     {
+        base.OnAttack();
         ApplyController(attackController);
     }
 
@@ -83,6 +88,7 @@ public class EnemyBehavior_Normal : EnemyBehavior
     {
         animator.Rebind();
         ApplyController(deathController);
+        base.OnDeath();
     }
 
     protected override IEnumerator DeathSaquence()

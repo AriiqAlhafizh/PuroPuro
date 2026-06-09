@@ -45,6 +45,7 @@ public class EnemyBehavior_MustLook : EnemyBehavior
 
     protected override void OnIdleEnter()
     {
+        base.OnIdleEnter();
         ApplyController(idleController);
     }
 
@@ -133,6 +134,7 @@ public class EnemyBehavior_MustLook : EnemyBehavior
 
     protected override void OnDeath()
     {
+        base.OnDeath();
         ApplyController(deathController);
     }
 

@@ -5,23 +5,48 @@ public class EnemyAudio : MonoBehaviour
     [Header("Audio Clips")]
     public AudioClip attackClip;
     public AudioClip spawnClip;
+    public AudioClip idleClip;
     public AudioClip dieClip;
 
     [Header("References")]
     public AudioSource audioSource;
 
+    private void Start()
+    {
+        AudioManager.instance.OnSFXVolumeChange += GetSFXVolume;
+    }
+
+    private void OnDisable()
+    {
+        AudioManager.instance.OnSFXVolumeChange -= GetSFXVolume;
+    }
+
+    private void GetSFXVolume(float volume)
+    {
+        audioSource.volume = volume;
+    }
+
     public void PlayAttackAudio()
     {
-        audioSource.PlayOneShot(attackClip);
+        if (attackClip != null)
+            audioSource.PlayOneShot(attackClip);
     }
 
     public void PlaySpawnAudio()
     {
-        audioSource.PlayOneShot(spawnClip);
+        if (spawnClip != null)
+            audioSource.PlayOneShot(spawnClip);
+    }
+
+    public void PlayIdleAudio()
+    {
+        if (idleClip != null)
+            audioSource.PlayOneShot(idleClip);
     }
 
     public void PlayDieAudio()
     {
-        audioSource.PlayOneShot(dieClip);
+        if (dieClip != null)
+            audioSource.PlayOneShot(dieClip);
     }
 }

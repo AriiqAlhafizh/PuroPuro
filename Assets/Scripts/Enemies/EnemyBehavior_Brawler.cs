@@ -46,5 +46,9 @@ public class EnemyBehavior_Brawler : EnemyBehavior_Normal
         StartCoroutine(AttackPhase());
     }
 
-    protected override void OnSpawn() { ApplyController(spawnController); }
+    protected override void OnSpawn() 
+    {
+        base.OnSpawn();
+        ApplyController(spawnController); 
+    }
 }
