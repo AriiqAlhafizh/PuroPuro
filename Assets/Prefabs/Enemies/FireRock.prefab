@@ -126,4 +126,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b334429293c1ee04c8b825bb929c4034, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Ranger_Bullet
-  speed: 20
+  dir: {x: 0, y: 0, z: 0}
+  endPos: {x: 0, y: 0, z: 0}
+  speed: 10

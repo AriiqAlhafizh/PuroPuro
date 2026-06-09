@@ -7,7 +7,6 @@ public class PlayerStatsManager : MonoBehaviour
     public static PlayerStatsManager instance;
 
     public event Action<Lane> OnLaneChange;
-    public Lane currentLane = Lane.Up;
 
     private void Awake()
     {
@@ -35,7 +34,6 @@ public class PlayerStatsManager : MonoBehaviour
 
     public void ChangeLane(Lane newLane)
     {
-        currentLane = newLane;
         OnLaneChange?.Invoke(newLane);
     }
 
