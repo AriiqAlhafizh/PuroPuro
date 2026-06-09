@@ -8,6 +8,9 @@ public class EnemyBehavior : MonoBehaviour
     [SerializeField] protected EnemyStatsSO enemyStats;
     [SerializeField] protected float offset = 0.5f;
 
+    [Header("Audio Clips")]
+    [SerializeField] protected EnemyAudio enemyAudio;
+
     protected int score = 50;
 
     protected float idleDuration;
@@ -35,6 +38,8 @@ public class EnemyBehavior : MonoBehaviour
         walkDuration = enemyStats.WalkDuration;
 
         dir = GetWalkDirection();
+
+        enemyAudio = GetComponent<EnemyAudio>();
 
         StartCoroutine(SpawnPhase());
     }
@@ -108,16 +113,22 @@ public class EnemyBehavior : MonoBehaviour
         return chosenDir;
     }
 
-    protected virtual void OnSpawn() { }
+    protected virtual void OnSpawn() 
+    {
+        enemyAudio.PlaySpawnAudio();
+    }
 
     protected virtual void OnWalkStart() { }
 
     protected virtual void OnWalkEnd() { }
-    protected virtual void OnIdleEnter() { }
+    protected virtual void OnIdleEnter() 
+    {
+        enemyAudio.PlayIdleAudio();
+    }
 
     protected virtual void OnAttack()
     {
-       
+       enemyAudio.PlayAttackAudio();
     }
 
     protected virtual void AttackLand()
@@ -125,13 +136,14 @@ public class EnemyBehavior : MonoBehaviour
         
     }
 
-    public virtual void OnBeingHit() {
+    public virtual void OnBeingHit() 
+    {
         StopAllCoroutines();
         StartCoroutine(DeathSaquence());
     }
     protected virtual void OnDeath() 
-    {
-        
+    {    
+        enemyAudio.PlayDieAudio();
     }
 
     protected virtual IEnumerator DeathSaquence()

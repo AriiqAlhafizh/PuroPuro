@@ -4,22 +4,15 @@
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
 
+#include "config.h"
 #include "I2Cdev.h"
 #include "MPU6050_6Axis_MotionApps20.h"
 
 MPU6050 mpu;
 WiFiUDP udp;
 
-// =========================
-// WIFI SETTINGS
-// =========================
-// const char* ssid = "*";
-// const char* password = "HapeBintang";
-const char* ssid = "ZTE_2.4G_EdXPE4";
-const char* password = "BayiCantik,TapiBohong";
-
 // Your PC IP Address
-const char* udpAddress = "192.168.1.13";
+const char* udpAddress = "10.32.110.222";
 const int udpSendPort = 4210;
 const int udpReceivePort = 4211;
 
@@ -69,7 +62,7 @@ int ammo = 6;
 
 // Calibration offset
 float yawOffset = 0;
-float pitchOffset = 0;
+float rollOffset = 0;
 
 void setup()
 {
@@ -175,13 +168,13 @@ void loop()
         if (digitalRead(CAL_BUTTON) == LOW)
         {
             yawOffset = yaw;
-            pitchOffset = pitch;
+            rollOffset = roll;
             delay(300);
         }
 
         // Apply offset
         yaw -= yawOffset;
-        pitch -= pitchOffset;
+        roll -= rollOffset;
 
         // =========================
         // TRIGGER BUTTON

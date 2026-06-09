@@ -11,11 +11,15 @@ public class PauseMenu : MonoBehaviour
     {
         pauseMenu.SetActive(true);
         Time.timeScale = 0f;
+        TimerManager.instance.PauseTimer();
+        PlayerStatsManager.instance.isPaused = true;
     }
     public void Resume()
     {
         pauseMenu.SetActive(false);
         Time.timeScale = 1f;
+        TimerManager.instance.StartTimer();
+        PlayerStatsManager.instance.isPaused = false;
     }
     public void Home()
     {

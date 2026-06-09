@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class SceneTransitionManager : MonoBehaviour
 {
-    public static SceneTransitionManager Instance;
+    public static SceneTransitionManager instance;
 
     [Header("References")]
     [SerializeField] private CanvasGroup canvasGroup;
@@ -17,9 +17,9 @@ public class SceneTransitionManager : MonoBehaviour
     private void Awake()
     {
         // Singleton pattern: keeps this object alive across scene loads
-        if (Instance == null)
+        if (instance == null)
         {
-            Instance = this;
+            instance = this;
             DontDestroyOnLoad(gameObject);
         }
         else

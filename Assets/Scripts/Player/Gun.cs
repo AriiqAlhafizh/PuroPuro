@@ -40,7 +40,8 @@ public class Gun : MonoBehaviour
     {
         if (PlayerStatsManager.instance.currentBullets > 0
             && !PlayerStatsManager.instance.isReloading
-            && !PlayerStatsManager.instance.cantReloadnShoot)
+            && !PlayerStatsManager.instance.cantReloadnShoot
+            && !PlayerStatsManager.instance.isPaused)
         {
             Ray ray = ControlManager.instance.isGyroEnabled
             ? Camera.main.ScreenPointToRay(gyroCursor.crosshair.position)

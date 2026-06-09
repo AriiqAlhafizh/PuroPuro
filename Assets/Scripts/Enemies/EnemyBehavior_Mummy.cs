@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class EnemyBehavior_Mummy : EnemyBehavior
 {
-    [SerializeField] private float heightOffset = 1f;
+    [SerializeField] private float heightOffset = 2f;
 
     private Vector3 startPos;
     private Vector3 targetPos;
@@ -36,7 +36,7 @@ public class EnemyBehavior_Mummy : EnemyBehavior
         float dropDuration = 0.5f; 
         float elapsed = 0f;
         startPos = rootTransform.position;
-        targetPos = startPos - new Vector3(0f, heightOffset + (offset/2), 0f);
+        targetPos = new Vector3(rootTransform.position.x, cam.transform.position.y - heightOffset, rootTransform.position.z);
 
         while (elapsed < dropDuration)
         {
@@ -65,7 +65,7 @@ public class EnemyBehavior_Mummy : EnemyBehavior
         float dropDuration = 0.5f;
         float elapsed = 0f;
         startPos = rootTransform.position;
-        targetPos = startPos + new Vector3(0f, heightOffset + (offset/2), 0f);
+        targetPos = startPos + new Vector3(0f, cam.transform.position.y + heightOffset, 0f);
 
         while (elapsed < dropDuration)
         {
@@ -108,6 +108,7 @@ public class EnemyBehavior_Mummy : EnemyBehavior
 
     protected override void OnDeath()
     {
+        base.OnDeath();
         StopAllCoroutines();
         Destroy(gameObject);
     }
@@ -145,6 +146,7 @@ public class EnemyBehavior_Mummy : EnemyBehavior
 
     protected override void OnAttack()
     {
+        base.OnAttack();
         animator.Rebind();
         animator.SetTrigger("Attack");
     }
