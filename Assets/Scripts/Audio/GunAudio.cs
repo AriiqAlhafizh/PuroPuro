@@ -8,6 +8,21 @@ public class GunAudio : MonoBehaviour
     public AudioClip ricochetClip;
     public AudioSource audioSource;
 
+    private void Start()
+    {
+        AudioManager.instance.OnSFXVolumeChange += GetSFXVolume;
+    }
+
+    private void OnDisable()
+    {
+        AudioManager.instance.OnSFXVolumeChange -= GetSFXVolume;
+    }
+
+    private void GetSFXVolume(float volume)
+    {
+        audioSource.volume = volume;
+    }
+
     public void PlayShootAudio()
     {
         audioSource.PlayOneShot(shootClips[Random.Range(0, shootClips.Count)]);
