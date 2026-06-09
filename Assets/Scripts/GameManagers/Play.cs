@@ -9,4 +9,18 @@ public class Play : MonoBehaviour
     {
         SceneManager.LoadSceneAsync(1);
     }   
+ public void QuitGame()
+    {
+        Application.Quit();
+    }
+
+ public void Credit()
+    {
+        SceneManager.LoadSceneAsync(8);
+    }
+
+    public void back()
+    {
+        SceneManager.LoadSceneAsync(0);
+    }
 }
