@@ -9,12 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8778868664977178679}
-  - component: {fileID: 3374552943397332972}
   - component: {fileID: 364046914732619347}
   - component: {fileID: 8248984738836939598}
   - component: {fileID: 6109676319987998362}
   - component: {fileID: 4135799069875261382}
-  - component: {fileID: 7885212715738742998}
   - component: {fileID: 2218133187491548270}
   - component: {fileID: 1031439737835262022}
   - component: {fileID: 3437850110267988823}
@@ -40,42 +38,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3374552943397332972
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1683508898033892033}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9323c9dd47ff72b40bc5cc3851404314, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SpawnerManager
-  SpawnPointsParent:
-  - {fileID: 0}
-  weightDecayFactor: 0.3
-  tierConfigs:
-  - tier: 0
-    displayName: Normal
-    baseCooldown: 3
-    enableAtDifficulty: 0
-    minMultiplier: 0.6
-  - tier: 1
-    displayName: Elite I
-    baseCooldown: 10
-    enableAtDifficulty: 1
-    minMultiplier: 0.8
-  - tier: 2
-    displayName: Elite II
-    baseCooldown: 20
-    enableAtDifficulty: 2
-    minMultiplier: 0.85
-  - tier: 3
-    displayName: Elite III
-    baseCooldown: 30
-    enableAtDifficulty: 3
-    minMultiplier: 0.9
 --- !u!114 &364046914732619347
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -92,6 +54,7 @@ MonoBehaviour:
   maxBullets: 6
   currentBullets: 6
   isReloading: 0
+  inIFrame: 0
   isInForcedPOV: 0
   cantReload: 0
   cantReloadnShoot: 0
@@ -127,7 +90,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ScoreManager
   baseScore: 0
-  combo: 0
   totalScore: 0
   hitShot: 0
   totalShot: 0
@@ -147,20 +109,6 @@ MonoBehaviour:
   SFXVolume: 0.5
   BGMVolume: 0.1
   SFXslider: {fileID: 0}
---- !u!114 &7885212715738742998
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1683508898033892033}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53a4e00c7ebeadd41b64cf2e708ed873, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ControlManager
-  isGyroEnabled: 0
-  gyroCursorPrefab: {fileID: 0}
 --- !u!114 &2218133187491548270
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,5 +165,5 @@ MonoBehaviour:
   esp32Port: 4211
   esp32IP: 192.168.1.15
   yaw: 0
-  pitch: 0
+  roll: 0
   triggerPressed: 0

@@ -112,8 +112,9 @@ public class LevelManager : MonoBehaviour
         currentLevel++;
         PlayerStatsManager.instance.StartIFrame();
         SpawnerManager.Instance.spawningEnabled = false;
-        yield return SceneTransitionManager.Instance.TransitionToScene(currentLevel);
         TimerManager.instance.ResetTimer();
+        yield return SceneTransitionManager.Instance.TransitionToScene(currentLevel);
+        TimerManager.instance.StartTimer();
         PlayerStatsManager.instance.EndIFrame();
         SpawnerManager.Instance.spawningEnabled = true;
     }

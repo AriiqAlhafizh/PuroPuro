@@ -9,6 +9,8 @@ public class PlayerStatsManager : MonoBehaviour
 
     public event Action<Lane> OnLaneChange;
 
+    public event Action<int> OnHealthChange;
+
     private void Awake()
     {
         if (instance == null)
@@ -45,7 +47,8 @@ public class PlayerStatsManager : MonoBehaviour
         Camera.main.GetComponent<ScreenShake>().TriggerShake();
         if (!inIFrame)
         {
-            health--;
+            --health;
+            OnHealthChange?.Invoke(health);
             if (health <= 0)
             {
                 // logic mati

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7278841218290764306}
   - component: {fileID: 2761128004812031931}
   - component: {fileID: 7661680642803951473}
+  - component: {fileID: 4212821380838901442}
   - component: {fileID: 7009825916035760049}
   - component: {fileID: 8679463877084357143}
   m_Layer: 0
@@ -90,10 +91,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gun
   gunAudio: {fileID: 0}
-  UDPManager: {fileID: 0}
   gyroCursor: {fileID: 0}
   hitEffectPrefab: {fileID: 0}
   reloadDuration: 0.5
+--- !u!114 &4212821380838901442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 619463515056065862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ea86a449a5d47a46a46d494cd1afbaf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GunAudio
+  shootClips:
+  - {fileID: 8300000, guid: 2203773368e4340d98c114f55c2dd7fd, type: 3}
+  - {fileID: 8300000, guid: 4d6281aa604094f04839cffa502096c0, type: 3}
+  - {fileID: 8300000, guid: 0dbe91efb8ee94e6695ef0f552d202ce, type: 3}
+  - {fileID: 8300000, guid: b33e2cff5225f4437a43a11d35763d46, type: 3}
+  - {fileID: 8300000, guid: b2d159f7e00d44d9bbc2d50a0c4fef59, type: 3}
+  reloadClip: {fileID: 8300000, guid: eb5685b26a6494994af389a3293064e8, type: 3}
+  ricochetClip: {fileID: 8300000, guid: 45f4c87ab4ae1814b9f0d86ca69bb1fa, type: 3}
+  audioSource: {fileID: 7009825916035760049}
 --- !u!82 &7009825916035760049
 AudioSource:
   m_ObjectHideFlags: 0
@@ -280,6 +301,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 89ad92fc-a8da-42db-ae93-5b614022c5cc
     m_ActionName: 'InGame/DEBUG_GetHit[/Keyboard/backspace]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c0f2c8eb-e29a-4a56-8a6c-80ad973dd2d7
+    m_ActionName: 'InGame/Change Control[/Keyboard/space]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: InGame

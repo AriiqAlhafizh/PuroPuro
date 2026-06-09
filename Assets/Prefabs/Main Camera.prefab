@@ -265,6 +265,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7661680642803951473, guid: af4a15badd4bb6c4db2c4e0f683631ef, type: 3}
+      propertyPath: gunAudio
+      value: 
+      objectReference: {fileID: 5472478008725787613}
+    - target: {fileID: 7661680642803951473, guid: af4a15badd4bb6c4db2c4e0f683631ef, type: 3}
       propertyPath: gyroCursor
       value: 
       objectReference: {fileID: 3230121053733389787}
@@ -325,27 +329,21 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 619463515056065862, guid: af4a15badd4bb6c4db2c4e0f683631ef, type: 3}
-      insertIndex: 3
-      addedObject: {fileID: 5529573810635077210}
-    - targetCorrespondingSourceObject: {fileID: 619463515056065862, guid: af4a15badd4bb6c4db2c4e0f683631ef, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3230121053733389787}
+    - targetCorrespondingSourceObject: {fileID: 619463515056065862, guid: af4a15badd4bb6c4db2c4e0f683631ef, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8704376561261262413}
   m_SourcePrefab: {fileID: 100100000, guid: af4a15badd4bb6c4db2c4e0f683631ef, type: 3}
 --- !u!4 &1479279634680864525 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7278841218290764306, guid: af4a15badd4bb6c4db2c4e0f683631ef, type: 3}
   m_PrefabInstance: {fileID: 8179899736093758751}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &8726869627597314137 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 619463515056065862, guid: af4a15badd4bb6c4db2c4e0f683631ef, type: 3}
-  m_PrefabInstance: {fileID: 8179899736093758751}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &5529573810635077210
+--- !u!114 &5472478008725787613 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 4212821380838901442, guid: af4a15badd4bb6c4db2c4e0f683631ef, type: 3}
+  m_PrefabInstance: {fileID: 8179899736093758751}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8726869627597314137}
   m_Enabled: 1
@@ -353,10 +351,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ea86a449a5d47a46a46d494cd1afbaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GunAudio
-  shootClips: []
-  reloadClip: {fileID: 0}
-  ricochetClip: {fileID: 0}
-  audioSource: {fileID: 0}
+--- !u!1 &8726869627597314137 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 619463515056065862, guid: af4a15badd4bb6c4db2c4e0f683631ef, type: 3}
+  m_PrefabInstance: {fileID: 8179899736093758751}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &3230121053733389787
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -369,8 +368,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e4e5c3122dd7de4793a007579f11e42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GyroCursor
-  udp: {fileID: 0}
   crosshair: {fileID: 0}
   yawRange: 40
   pitchRange: 25
   smoothing: 10
+--- !u!114 &8704376561261262413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8726869627597314137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53a4e00c7ebeadd41b64cf2e708ed873, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ControlManager
+  isGyroEnabled: 0
+  gyroCursorPrefab: {fileID: 0}

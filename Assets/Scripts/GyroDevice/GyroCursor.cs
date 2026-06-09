@@ -3,13 +3,11 @@ using UnityEngine.UI;
 
 public class GyroCursor : MonoBehaviour
 {
-    public UDPManager udp;
-
     public RectTransform crosshair;
 
     // AIM RANGE
     public float yawRange = 40f;
-    public float pitchRange = 25f;
+    public float rollRange = 25f;
 
     // SMOOTHING
     public float smoothing = 10f;
@@ -32,15 +30,15 @@ public class GyroCursor : MonoBehaviour
         // NORMALIZE YAW
         float normalizedX =
             Mathf.Clamp(
-                udp.yaw / yawRange,
+                UDPManager.instance.yaw / yawRange,
                 -1f,
                 1f
             );
 
-        // NORMALIZE PITCH
+        // NORMALIZE ROLL
         float normalizedY =
             Mathf.Clamp(
-                udp.pitch / pitchRange,
+                UDPManager.instance.roll / rollRange,
                 -1f,
                 1f
             );
@@ -51,7 +49,7 @@ public class GyroCursor : MonoBehaviour
             * Screen.width;
 
         float targetY =
-            ((-normalizedY + 1f) / 2f)
+            ((normalizedY + 1f) / 2f)
             * Screen.height;
 
         // SMOOTH MOVEMENT
