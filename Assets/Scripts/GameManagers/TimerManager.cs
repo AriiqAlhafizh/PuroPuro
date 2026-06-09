@@ -141,8 +141,6 @@ public class TimerManager : MonoBehaviour
         else
             newDiff = Difficulty.Hard;
 
-        CheckLevelTime(s);
-
         if (newDiff != currentDifficulty || invokeEvent)
         {
             bool changed = newDiff != currentDifficulty;
@@ -151,16 +149,6 @@ public class TimerManager : MonoBehaviour
                 OnDifficultyChanged?.Invoke(currentDifficulty);
         }
     }
-
-    private void CheckLevelTime(double s)
-    {
-        if (LevelManager.instance == null)
-            return;
-
-        if (s > LevelManager.instance.GetLevelTime(LevelManager.instance.currentLevel))
-            LevelManager.instance.AdvanceLevel();
-    }
-
 
     private void OnValidate()
     {

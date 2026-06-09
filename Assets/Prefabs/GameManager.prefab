@@ -15,9 +15,6 @@ GameObject:
   - component: {fileID: 6109676319987998362}
   - component: {fileID: 4135799069875261382}
   - component: {fileID: 7885212715738742998}
-  - component: {fileID: 2218133187491548270}
-  - component: {fileID: 1031439737835262022}
-  - component: {fileID: 3437850110267988823}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -54,6 +51,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SpawnerManager
   SpawnPointsParent:
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   weightDecayFactor: 0.3
   tierConfigs:
   - tier: 0
@@ -68,12 +68,12 @@ MonoBehaviour:
     minMultiplier: 0.8
   - tier: 2
     displayName: Elite II
-    baseCooldown: 20
+    baseCooldown: 15
     enableAtDifficulty: 2
     minMultiplier: 0.85
   - tier: 3
     displayName: Elite III
-    baseCooldown: 30
+    baseCooldown: 20
     enableAtDifficulty: 3
     minMultiplier: 0.9
 --- !u!114 &364046914732619347
@@ -88,14 +88,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6447a5809df734f4a871fd4a4d0e263b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStatsManager
+  currentLane: 0
   health: 3
   maxBullets: 6
   currentBullets: 6
   isReloading: 0
   isInForcedPOV: 0
-  cantReload: 0
-  cantReloadnShoot: 0
-  bindDuration: 2
+  isBinded: 0
+  isParalyzed: 0
 --- !u!114 &8248984738836939598
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110,8 +110,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimerManager
   useUnscaledTime: 1
   secondsToNormal: 30
-  secondsToMedium: 60
-  secondsToHard: 90
+  secondsToMedium: 90
+  secondsToHard: 180
   autoDifficultyEnabled: 1
   elapsedSeconds: 0
 --- !u!114 &6109676319987998362
@@ -146,7 +146,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AudioManager
   SFXVolume: 0.5
   BGMVolume: 0.1
-  SFXslider: {fileID: 0}
 --- !u!114 &7885212715738742998
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -161,61 +160,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ControlManager
   isGyroEnabled: 0
   gyroCursorPrefab: {fileID: 0}
---- !u!114 &2218133187491548270
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1683508898033892033}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20b0b19cb319f464c99e7658743d3925, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LevelManager
-  levelTimes:
-  - 30
-  - 60
-  - 90
-  - 180
-  currentLevel: 1
---- !u!114 &1031439737835262022
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1683508898033892033}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0df6c5d0c802f6d43a9eb0347455bcc4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CursorManager
-  cursorSprites:
-  - {fileID: 2800000, guid: 079a1b8ea9126ba4f8b05c7131c281e9, type: 3}
-  - {fileID: 2800000, guid: 1ceb732d68b865f45b611a1c5d321301, type: 3}
-  - {fileID: 2800000, guid: 50a53ec3eea08374d8a00ad9637dad01, type: 3}
-  - {fileID: 2800000, guid: 87aaa47ec62705a4aabf89716e74255b, type: 3}
-  - {fileID: 2800000, guid: c0d9572176704f3498aaf180d5f80715, type: 3}
-  - {fileID: 2800000, guid: 6771f39a6994a6b4d82a7faa59d9ff7d, type: 3}
-  - {fileID: 2800000, guid: e44cb64a403b0834e964fc0b0e8b88fd, type: 3}
-  - {fileID: 2800000, guid: 9563e02215a4c5e42ab4e2831f998d56, type: 3}
-  - {fileID: 2800000, guid: 8f348426740de5f4f8a96d0e3ef84117, type: 3}
---- !u!114 &3437850110267988823
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1683508898033892033}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0fe4d9753963496469000dc581726ac2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UDPReceiver
-  localPort: 4210
-  esp32Port: 4211
-  esp32IP: 192.168.1.15
-  yaw: 0
-  pitch: 0
-  triggerPressed: 0
