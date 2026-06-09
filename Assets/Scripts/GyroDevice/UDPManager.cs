@@ -7,6 +7,20 @@ using System.Globalization;
 
 public class UDPManager : MonoBehaviour
 {
+    public static UDPManager instance;
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
     UdpClient udp;
     Thread receiveThread;
 
@@ -15,11 +29,11 @@ public class UDPManager : MonoBehaviour
     public int esp32Port = 4211;
 
     [Header("ESP32")]
-    public string esp32IP = "192.168.1.50";
+    public string esp32IP = "10.32.110.234";
 
     // RECEIVED DATA
     public float yaw;
-    public float pitch;
+    public float roll;
 
     public bool triggerPressed;
 
@@ -100,7 +114,7 @@ public class UDPManager : MonoBehaviour
                         CultureInfo.InvariantCulture
                     );
 
-                pitch =
+                roll =
                     float.Parse(
                         values[1],
                         CultureInfo.InvariantCulture

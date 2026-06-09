@@ -6,7 +6,6 @@ public class Gun : MonoBehaviour
 {
     [Header("References")]
     public GunAudio gunAudio;
-    public UDPManager UDPManager;
     public GyroCursor gyroCursor;
     public GameObject hitEffectPrefab;
 
@@ -23,11 +22,11 @@ public class Gun : MonoBehaviour
     private void Update()
     {
         // Detect rising edge: triggerPressed goes from false to true
-        if (UDPManager.triggerPressed && !previousTriggerPressed)
+        if (UDPManager.instance.triggerPressed && !previousTriggerPressed)
         {
             Shoot();
         }
-        previousTriggerPressed = UDPManager.triggerPressed;
+        previousTriggerPressed = UDPManager.instance.triggerPressed;
 
     }
     public void Shoot(InputAction.CallbackContext context)
@@ -77,10 +76,10 @@ public class Gun : MonoBehaviour
 
                     HitEffect(hit);
 
-                    
+
                     //Debug.Log("Hit: " + hit.collider.name + " " + type);
 
-                    
+
                 }
                 ScoreManager.instance.IncreaseTotalShot();
             }
@@ -92,7 +91,7 @@ public class Gun : MonoBehaviour
                 StartCoroutine(ReloadCoroutine());
             }
 
-            UDPManager.SendPlayerData(PlayerStatsManager.instance.currentBullets, PlayerStatsManager.instance.health);
+            UDPManager.instance.SendPlayerData(PlayerStatsManager.instance.currentBullets, PlayerStatsManager.instance.health);
 
             // Debug
             //Debug.Log("Bullets left: " + PlayerStatsManager.instance.currentBullets);
@@ -123,9 +122,9 @@ public class Gun : MonoBehaviour
     }
     public void Reload(InputAction.CallbackContext context)
     {
-        if (context.performed 
+        if (context.performed
             && !PlayerStatsManager.instance.isReloading
-            && !PlayerStatsManager.instance.cantReload 
+            && !PlayerStatsManager.instance.cantReload
             && !PlayerStatsManager.instance.cantReloadnShoot
             && PlayerStatsManager.instance.currentBullets < PlayerStatsManager.instance.maxBullets - 1)
         {
@@ -141,7 +140,7 @@ public class Gun : MonoBehaviour
         yield return new WaitForSeconds(reloadDuration);
         PlayerStatsManager.instance.currentBullets = PlayerStatsManager.instance.maxBullets;
         PlayerStatsManager.instance.isReloading = false;
-        UDPManager.SendPlayerData(PlayerStatsManager.instance.currentBullets, PlayerStatsManager.instance.health);
+        UDPManager.instance.SendPlayerData(PlayerStatsManager.instance.currentBullets, PlayerStatsManager.instance.health);
         Debug.Log("Reloaded! Bullets: " + PlayerStatsManager.instance.currentBullets);
     }
 }
