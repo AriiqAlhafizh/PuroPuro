@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 24711655}
   - component: {fileID: 24711654}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Logo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -176,7 +176,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -814223675, guid: 6b87264692e343d48adbcdf0eb2c73f1, type: 3}
+  m_Sprite: {fileID: 561198559, guid: 6b87264692e343d48adbcdf0eb2c73f1, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -461,7 +461,7 @@ MonoBehaviour:
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 1
+  m_ScrollSensitivity: 2
   m_Viewport: {fileID: 640212155}
   m_HorizontalScrollbar: {fileID: 0}
   m_VerticalScrollbar: {fileID: 1146997979}
@@ -572,7 +572,7 @@ MonoBehaviour:
 '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f3b834c3cf32f4c48a81b59892177a34, type: 2}
-  m_sharedMaterial: {fileID: 3470164010460827373, guid: f3b834c3cf32f4c48a81b59892177a34, type: 2}
+  m_sharedMaterial: {fileID: 6142375556029607138, guid: f3b834c3cf32f4c48a81b59892177a34, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1223,7 +1223,7 @@ MonoBehaviour:
     \r\nBintang Khalik Muhammad\n\nthank you for asset:\nLayerLab\nOArielG\nBlack
     Hammer\n\n\n\n\n\r\n"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8800dd4fd43db8448818647f931f7c1d, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: f3b834c3cf32f4c48a81b59892177a34, type: 2}
   m_sharedMaterial: {fileID: -5930494694908371394, guid: 8800dd4fd43db8448818647f931f7c1d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1290,7 +1290,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1954315758
@@ -1448,7 +1448,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1965984979}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c1bf8987ba32054e81b36c02c029d12, type: 3}
+  m_Script: {fileID: 11500000, guid: 0826d5a7971dd274c9f1f3589ad2a9d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MainMenu
 --- !u!1 &2050619239
@@ -1514,8 +1514,8 @@ MonoBehaviour:
     Studio\nDr.Game\nDante's anvil\nBlack Hammer\nNavidtbt\nGridness Studio\nJustCreate\nPolytope
     Studio\nConquerror\nOArielG\nSazenGames\nClean Shirt Labs\nKomposite Sound"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8800dd4fd43db8448818647f931f7c1d, type: 2}
-  m_sharedMaterial: {fileID: -5930494694908371394, guid: 8800dd4fd43db8448818647f931f7c1d, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: f3b834c3cf32f4c48a81b59892177a34, type: 2}
+  m_sharedMaterial: {fileID: 6142375556029607138, guid: f3b834c3cf32f4c48a81b59892177a34, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
