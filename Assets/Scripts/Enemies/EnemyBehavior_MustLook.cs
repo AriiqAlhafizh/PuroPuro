@@ -68,30 +68,28 @@ public class EnemyBehavior_MustLook : EnemyBehavior
 
         if (Mathf.Abs(delta.x) > Mathf.Abs(delta.z))
         {
-            if (delta.x > 0 || delta.x < 0 && PlayerStatsManager.instance.currentLane == Lane.Right)
+            if (delta.x > 0)
             {
                 offset = -offset;
                 currentLane = Lane.Left;
             }
-            else if (delta.x < 0 || delta.x > 0 && PlayerStatsManager.instance.currentLane == Lane.Left)
+            else
             {
                 currentLane = Lane.Right;
             }
-          
             endPos = new Vector3(targetPos.x + offset, transform.position.y, transform.position.z);
         }
         else
         {
-            if (delta.z > 0 || delta.z < 0 && PlayerStatsManager.instance.currentLane == Lane.Up)
+            if (delta.z > 0)
             {
                 offset = -offset;
                 currentLane = Lane.Down;
             }
-            else if (delta.z < 0 || delta.z > 0 && PlayerStatsManager.instance.currentLane == Lane.Down)
+            else
             {
                 currentLane = Lane.Up;
             }
-
             endPos = new Vector3(transform.position.x, transform.position.y, targetPos.z + offset);
         }
 
@@ -133,6 +131,7 @@ public class EnemyBehavior_MustLook : EnemyBehavior
 
     protected override void OnDeath()
     {
+        animator.Rebind();
         ApplyController(deathController);
     }
 
