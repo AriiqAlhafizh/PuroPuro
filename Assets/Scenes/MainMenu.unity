@@ -417,7 +417,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
-      m_Calls: []
 --- !u!114 &233887762
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -833,12 +832,6 @@ RectTransform:
 --- !u!1001 &613876238
 PrefabInstance:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 805546004}
-  m_CullTransparentMesh: 1
---- !u!1 &868642500
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
