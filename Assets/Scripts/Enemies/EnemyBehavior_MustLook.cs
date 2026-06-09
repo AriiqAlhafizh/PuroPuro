@@ -133,7 +133,6 @@ public class EnemyBehavior_MustLook : EnemyBehavior
 
     protected override void OnDeath()
     {
-        animator.Rebind();
         ApplyController(deathController);
     }
 
