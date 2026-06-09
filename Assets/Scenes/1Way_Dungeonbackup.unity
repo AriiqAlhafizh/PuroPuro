@@ -2559,6 +2559,11 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
+--- !u!1 &1372068678 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2696733169459484797, guid: f99fc0a05ca198c4684e1ab143ce3bea, type: 3}
+  m_PrefabInstance: {fileID: 556130507}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1397777416
 PrefabInstance:
   m_ObjectHideFlags: 0

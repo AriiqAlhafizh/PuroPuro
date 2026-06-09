@@ -16,7 +16,7 @@ public class MainMenu : MonoBehaviour
 
  public void Credit()
     {
-        SceneManager.LoadSceneAsync(8);
+        SceneManager.LoadSceneAsync(7);
     }
 
     public void back()
