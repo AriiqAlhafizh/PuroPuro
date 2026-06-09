@@ -42,7 +42,6 @@ public class PlayerStatsManager : MonoBehaviour
     public void TakeDamage()
     {
         Camera.main.GetComponent<ScreenShake>().TriggerShake();
-        health--;
     }
   
     public void DEBUG_TakeDamage(InputAction.CallbackContext context)

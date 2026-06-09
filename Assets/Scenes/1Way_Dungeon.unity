@@ -3621,6 +3621,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2076922738904949602, guid: f99fc0a05ca198c4684e1ab143ce3bea, type: 3}
+      propertyPath: playerAmmo
+      value: 
+      objectReference: {fileID: 95586064}
+    - target: {fileID: 2896519484545565997, guid: f99fc0a05ca198c4684e1ab143ce3bea, type: 3}
+      propertyPath: m_Name
+      value: HUD
+      objectReference: {fileID: 0}
+    - target: {fileID: 3535465312799345191, guid: f99fc0a05ca198c4684e1ab143ce3bea, type: 3}
+      propertyPath: playerHealth
+      value: 
+      objectReference: {fileID: 95586064}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
