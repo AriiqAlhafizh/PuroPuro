@@ -1033,18 +1033,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
-    - target: {fileID: 3437850110267988823, guid: b6c15a53655cd5040b2d233c36c0eeee, type: 3}
-      propertyPath: esp32IP
-      value: 10.32.110.234
-      objectReference: {fileID: 0}
-    - target: {fileID: 8248984738836939598, guid: b6c15a53655cd5040b2d233c36c0eeee, type: 3}
-      propertyPath: secondsToNormal
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 8248984738836939598, guid: b6c15a53655cd5040b2d233c36c0eeee, type: 3}
-      propertyPath: useUnscaledTime
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8778868664977178679, guid: b6c15a53655cd5040b2d233c36c0eeee, type: 3}
       propertyPath: m_LocalPosition.x
       value: -16.78
@@ -1325,6 +1313,10 @@ PrefabInstance:
       propertyPath: 'SpawnPointsParent.Array.data[0]'
       value: 
       objectReference: {fileID: 330961254}
+    - target: {fileID: 4176564149824134107, guid: b07b16102f9eb474fadcee356ca70adb, type: 3}
+      propertyPath: tierConfigs.Array.data[0].baseCooldown
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4949844634441901126, guid: b07b16102f9eb474fadcee356ca70adb, type: 3}
       propertyPath: m_Name
       value: SpawnerManager
@@ -2622,11 +2614,6 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
---- !u!1 &1372068678 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2696733169459484797, guid: f99fc0a05ca198c4684e1ab143ce3bea, type: 3}
-  m_PrefabInstance: {fileID: 556130507}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1397777416
 PrefabInstance:
   m_ObjectHideFlags: 0

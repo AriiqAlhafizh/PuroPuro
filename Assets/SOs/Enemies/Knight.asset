@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Knight
   m_EditorClassIdentifier: Assembly-CSharp::EnemyStatsSO
   IdleDuration: 4
-  WalkDuration: 10
+  WalkDuration: 8

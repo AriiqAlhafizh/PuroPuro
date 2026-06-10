@@ -55,6 +55,8 @@ MonoBehaviour:
   currentBullets: 6
   isReloading: 0
   inIFrame: 0
+  currentLane: 0
+  isPaused: 0
   isInForcedPOV: 0
   cantReload: 0
   cantReloadnShoot: 0
@@ -108,7 +110,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AudioManager
   SFXVolume: 0.5
   BGMVolume: 0.1
-  SFXslider: {fileID: 0}
 --- !u!114 &2218133187491548270
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,7 +164,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UDPReceiver
   localPort: 4210
   esp32Port: 4211
-  esp32IP: 192.168.1.15
+  esp32IP: 10.32.110.234
   yaw: 0
   roll: 0
   triggerPressed: 0

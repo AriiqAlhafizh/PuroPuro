@@ -121,24 +121,24 @@ public class EnemyBehavior_Mummy : EnemyBehavior
             return Vector3.zero;
 
         Vector3 targetPos = cam.transform.position;
-        Vector3 delta = targetPos - transform.position;
+        Vector3 delta = targetPos - rootTransform.position;
 
         Vector3 lookDir = new Vector3(delta.x, 0f, delta.z);
         if (lookDir.sqrMagnitude > 0.0001f)
         {
-            transform.rotation = Quaternion.LookRotation(lookDir);
+            rootTransform.rotation = Quaternion.LookRotation(lookDir);
         }
 
 
         if (Mathf.Abs(delta.x) > Mathf.Abs(delta.z))
         {
             offset = (delta.x > 0) ? -offset : offset;
-            endPos = new Vector3(targetPos.x + offset, targetPos.y + heightOffset, transform.position.z);
+            endPos = new Vector3(targetPos.x + offset, targetPos.y + heightOffset, rootTransform.position.z);
         }
         else
         {
             offset = (delta.z > 0) ? -offset : offset;
-            endPos = new Vector3(transform.position.x, targetPos.y + heightOffset, targetPos.z + offset);
+            endPos = new Vector3(rootTransform.position.x, targetPos.y + heightOffset, targetPos.z + offset);
         }
 
         return endPos;

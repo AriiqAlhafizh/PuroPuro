@@ -192,10 +192,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Eye Bat
       objectReference: {fileID: 0}
-    - target: {fileID: 1433355900633108, guid: 2634306c4a5de244a9539aa4a906c4ea, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4107771985693238, guid: 2634306c4a5de244a9539aa4a906c4ea, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.29
@@ -317,10 +313,6 @@ PrefabInstance:
     - target: {fileID: 224039418859698243, guid: ec934c4e1a622f047bbe701098997cac, type: 3}
       propertyPath: m_Name
       value: Zombie
-      objectReference: {fileID: 0}
-    - target: {fileID: 224039418859698243, guid: ec934c4e1a622f047bbe701098997cac, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 599016161792844537, guid: ec934c4e1a622f047bbe701098997cac, type: 3}
       propertyPath: m_LocalPosition.x
@@ -599,9 +591,13 @@ MonoBehaviour:
   maxBullets: 6
   currentBullets: 6
   isReloading: 0
+  inIFrame: 0
+  currentLane: 0
+  isPaused: 0
   isInForcedPOV: 0
-  isBinded: 0
-  isParalyzed: 0
+  cantReload: 0
+  cantReloadnShoot: 0
+  bindDuration: 2
 --- !u!1 &1311359932
 GameObject:
   m_ObjectHideFlags: 0
@@ -689,7 +685,7 @@ Transform:
   m_GameObject: {fileID: 1311359932}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.35, y: 2.19, z: -11.43}
+  m_LocalPosition: {x: 2.35, y: 1.8, z: -11.43}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

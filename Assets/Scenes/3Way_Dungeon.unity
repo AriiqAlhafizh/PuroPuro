@@ -4124,6 +4124,18 @@ PrefabInstance:
       propertyPath: 'SpawnPointsParent.Array.data[3]'
       value: 
       objectReference: {fileID: 188700076}
+    - target: {fileID: 4176564149824134107, guid: b07b16102f9eb474fadcee356ca70adb, type: 3}
+      propertyPath: tierConfigs.Array.data[0].baseCooldown
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4176564149824134107, guid: b07b16102f9eb474fadcee356ca70adb, type: 3}
+      propertyPath: tierConfigs.Array.data[1].baseCooldown
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4176564149824134107, guid: b07b16102f9eb474fadcee356ca70adb, type: 3}
+      propertyPath: tierConfigs.Array.data[2].baseCooldown
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4949844634441901126, guid: b07b16102f9eb474fadcee356ca70adb, type: 3}
       propertyPath: m_Name
       value: SpawnerManager
