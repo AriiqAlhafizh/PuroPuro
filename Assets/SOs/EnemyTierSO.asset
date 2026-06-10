@@ -19,6 +19,7 @@ MonoBehaviour:
   - {fileID: 2792594256196821630, guid: 6ae7358abd36e6f49805133159e039fc, type: 3}
   tier3EnemyPrefab:
   - {fileID: 1433355900633108, guid: 2634306c4a5de244a9539aa4a906c4ea, type: 3}
+  - {fileID: 8256612747274493544, guid: 2f3a46519470b7148a5bb80c1ca8211f, type: 3}
   tier4EnemyPrefab:
   - {fileID: 8094233446992353698, guid: 0d7fefd2f89a59b4f9ecb8c1443aff52, type: 3}
   - {fileID: 2766520990056341028, guid: ec74b107f19235147a6845a1bf579383, type: 3}
