@@ -390,7 +390,7 @@ MonoBehaviour:
   enemyStats: {fileID: 11400000, guid: 44871082f013e574c931c162ab49e2b9, type: 2}
   offset: 4
   enemyAudio: {fileID: 0}
-  heightOffset: 1.5
+  heightOffset: 0.5
   lookScaleMultiplier: 2
   lookScaleDuration: 1
   lungeDistance: 4
