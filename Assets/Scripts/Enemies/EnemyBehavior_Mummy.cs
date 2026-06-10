@@ -20,7 +20,7 @@ public class EnemyBehavior_Mummy : EnemyBehavior
 
         cam = Camera.main;
 
-        rootTransform = transform.parent;
+        rootTransform = (transform.parent != null) ? transform.parent : transform;
 
         idleDuration = enemyStats.IdleDuration;
         walkDuration = enemyStats.WalkDuration;
@@ -32,6 +32,7 @@ public class EnemyBehavior_Mummy : EnemyBehavior
 
     protected override IEnumerator SpawnPhase()
     {
+        Debug.Log("Mummy Spawned at: " + rootTransform.position);
         OnSpawn();
         float dropDuration = 0.5f; 
         float elapsed = 0f;
@@ -47,6 +48,7 @@ public class EnemyBehavior_Mummy : EnemyBehavior
         }
 
         rootTransform.position = targetPos;
+        Debug.Log("Mummy at: " + rootTransform.position);
 
         StartCoroutine(IdlePhase());
     }
@@ -153,5 +155,10 @@ public class EnemyBehavior_Mummy : EnemyBehavior
     protected override void AttackLand()
     {
         PlayerStatsManager.instance.ApplyBind();
+    }
+
+    protected override void OnSpawn()
+    {
+        
     }
 }
